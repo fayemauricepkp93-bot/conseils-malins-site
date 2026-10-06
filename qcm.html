@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b3d91">
+<title>QCM — Conseils Malins</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f7f9fc;color:#0f1c33;line-height:1.6;padding-bottom:32px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;border:0;cursor:pointer;background:none;color:inherit}
+.container{max-width:640px;margin:0 auto;padding:0 16px}
+.nav{background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:10}
+.back{font-size:14px;font-weight:700;color:#0b3d91;display:inline-flex;align-items:center;gap:6px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;color:#0b3d91;font-size:13px}
+.logo-mark{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#d4a017,#f2c14e);color:#0b3d91;display:grid;place-items:center;font-weight:900;font-size:13px}
+.hero{text-align:center;padding:32px 0 24px}
+.badge{display:inline-block;padding:5px 12px;border-radius:999px;background:#e8f0fb;color:#0b3d91;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+h1{font-size:clamp(1.6rem,5vw,2.2rem);font-weight:900;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
+.hl{background:linear-gradient(180deg,transparent 58%,#f2c14e 58%);padding:0 4px}
+.hero p{color:#4a5876;font-size:14.5px;max-width:520px;margin:0 auto}
+.intro{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:24px;text-align:center;box-shadow:0 8px 24px rgba(11,61,145,.05);margin-bottom:20px}
+.intro h2{font-size:1.15rem;font-weight:800;color:#0b3d91;margin-bottom:14px}
+.intro ul{list-style:none;padding:0;display:inline-block;text-align:left;margin-bottom:20px}
+.intro li{display:flex;gap:10px;font-size:14px;color:#4a5876;padding:5px 0}
+.intro li::before{content:"✓";color:#d4a017;font-weight:900;flex-shrink:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border-radius:12px;font-weight:800;font-size:14.5px;transition:all .15s;white-space:nowrap;text-decoration:none;cursor:pointer;border:0}
+.btn-accent{background:linear-gradient(135deg,#d4a017,#f2c14e);color:#0b3d91;box-shadow:0 8px 20px rgba(212,160,23,.35);width:100%}
+.btn-accent:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(212,160,23,.45)}
+.btn-primary{background:#0b3d91;color:#fff}
+.btn-primary:hover{background:#1565c0}
+.btn-ghost{background:#fff;color:#0b3d91;border:1.5px solid #e2e8f0}
+.btn-ghost:hover{border-color:#0b3d91;background:#e8f0fb}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.progress{margin-bottom:20px}
+.prog-label{display:flex;justify-content:space-between;font-size:12.5px;font-weight:700;color:#4a5876;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.prog-bar{height:6px;background:#eef2f6;border-radius:999px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,#d4a017,#f2c14e);border-radius:999px;transition:width .3s}
+.question{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:22px;box-shadow:0 8px 24px rgba(11,61,145,.05);margin-bottom:16px}
+.q-num{font-size:11px;font-weight:900;color:#d4a017;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.q-text{font-size:15.5px;font-weight:700;color:#0f1c33;margin-bottom:16px;line-height:1.5}
+.options{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:flex-start;gap:12px;padding:13px 15px;background:#fafbfd;border:1.5px solid #eef2f6;border-radius:12px;cursor:pointer;transition:all .15s;font-size:14.5px}
+.opt:hover{border-color:#1565c0;background:#e8f0fb}
+.opt.correct{border-color:#1b7e3f;background:#e6f5ec}
+.opt.wrong{border-color:#b3261e;background:#fbeae7}
+.opt-letter{width:26px;height:26px;flex-shrink:0;border-radius:50%;background:#fff;border:1.5px solid #e2e8f0;display:grid;place-items:center;font-weight:900;font-size:12px;color:#0b3d91}
+.opt.correct .opt-letter{background:#1b7e3f;color:#fff;border-color:#1b7e3f}
+.opt.wrong .opt-letter{background:#b3261e;color:#fff;border-color:#b3261e}
+.opt-text{flex:1;line-height:1.5}
+.justif{margin-top:16px;padding:14px;background:#fff8e6;border-left:4px solid #d4a017;border-radius:0 6px 6px 0;font-size:13.5px;line-height:1.65;color:#4a5876}
+.justif strong{color:#0b3d91;display:block;margin-bottom:4px}
+.nav-row{display:flex;gap:10px;justify-content:space-between;margin-top:16px}
+.nav-row .btn{flex:1}
+.score{padding:32px 24px;border-radius:18px;text-align:center;margin-bottom:20px}
+.score.ok{background:#e6f5ec;color:#14532d}
+.score.warn{background:#fdf1e3;color:#7c3a00}
+.score.err{background:#fbeae7;color:#7f1d1d}
+.score-val{font-size:3rem;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+.score-lbl{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-top:8px;opacity:.75}
+.score-verdict{font-size:17px;font-weight:800;margin-top:14px}
+.footer{text-align:center;font-size:12px;color:#7b88a3;padding:24px 16px 0}
+.footer a{color:#0b3d91;font-weight:600}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="back">← Accueil</a>
+  <div class="logo">
+    <span class="logo-mark">CM</span>
+    <span>Conseils Malins</span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="badge">Évaluation</div>
+    <h1>QCM de <span class="hl">certification</span></h1>
+    <p>10 questions corrigées pour valider vos acquis en diagnostic réseau basse tension.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <div id="intro" class="intro">
+    <h2>Prêt à démarrer ?</h2>
+    <ul>
+      <li>10 questions · 4 réponses · 1 correcte</li>
+      <li>Correction immédiate</li>
+      <li>Justification pédagogique</li>
+      <li>Score de validation : 7/10 (70 %)</li>
+    </ul>
+    <button class="btn btn-accent" id="start">Démarrer l'évaluation</button>
+  </div>
+
+  <div id="quiz" hidden></div>
+  <div id="result" hidden></div>
+
+  <p class="footer">
+    <strong>Conseils Malins</strong> · Évaluation technique BT<br>
+    <a href="/">← Retour à l'accueil</a>
+  </p>
+
+</main>
+
+<script>
+(function(){
+'use strict';
+var Q=[
+{q:"Plage normale de tension Phase-Neutre selon EN 50160 ?",o:["180–240 V","207–253 V","220–230 V","190–250 V"],c:1,w:"EN 50160 définit ±10% autour de 230 V, soit 207–253 V."},
+{q:"V_N-T = 15 V avec disjoncteur OUVERT. Verdict ?",o:["Défaut interne","Neutre réseau dégradé (faute Senelec)","Installation conforme","Fermer le DG"],c:1,w:"DG ouvert = installation isolée. V_N-T élevée = faute amont (réseau ou colonne)."},
+{q:"Seuil de V_N-T déclenchant une vigilance immédiate ?",o:["> 2 V","> 5 V","> 10 V","> 50 V"],c:2,w:"< 5 V normal, 5-10 V à surveiller, > 10 V défaut à investiguer."},
+{q:"Que signifie le régime de neutre TT ?",o:["Neutre à la terre côté source, masses à la terre locale","Neutre isolé","Neutre et masses au même point","Neutre non distribué"],c:0,w:"TT : prise de terre côté transfo, prise de terre locale côté utilisation."},
+{q:"DDR 30 mA déclenche sans surcharge. Cause probable ?",o:["Surtension","Fuite à la terre (défaut isolement)","Neutre rompu","Sous-tension"],c:1,w:"Le DDR détecte les fuites. Déclenchement = courant de fuite > 30 mA."},
+{q:"Ordre correct d'une procédure de consignation ?",o:["Séparer, condamner, identifier, vérifier, baliser","Identifier, séparer, vérifier, baliser, condamner","Vérifier, séparer, identifier, condamner, baliser","Baliser, condamner, identifier, séparer, vérifier"],c:0,w:"Séquence officielle : Séparer → Condamner → Identifier → VAT → Baliser."},
+{q:"Test de terre à 250 Ω. Que faire ?",o:["Rien, conforme","Signaler terre défectueuse","Ajouter un DDR","Augmenter la section"],c:1,w:"Une terre BT doit être < 100 Ω. 250 Ω est hors norme."},
+{q:"V_N-T = 3 V, V_P-N = 220 V, terre = 1 V. Verdict ?",o:["Faute Senelec","Faute interne","Installation conforme","Manque mesures"],c:2,w:"Les 3 valeurs sont dans les plages normales. Rien à signaler."},
+{q:"Appareil INDISPENSABLE avant contact sur installation hors tension ?",o:["Multimètre ohmmètre","VAT (testeur absence tension)","Pince ampèremétrique","Thermomètre IR"],c:1,w:"Le VAT est l'appareil de sécurité obligatoire. Il doit être testé avant ET après."},
+{q:"Cause la plus fréquente d'échauffement d'une borne ?",o:["Surtension","Mauvais serrage ou oxydation","Section trop importante","Parafoudre"],c:1,w:"Borne mal serrée = résistance de contact élevée = échauffement = incendie."}
+];
+var L=['A','B','C','D'],PASS=7,ans=[],cur=0,state='intro';
+function $(id){return document.getElementById(id);}
+function start(){ans=new Array(Q.length).fill(null);cur=0;state='quiz';$('intro').hidden=true;$('result').hidden=true;$('quiz').hidden=false;render();}
+function render(){
+if(state!=='quiz')return;
+var q=Q[cur],sel=ans[cur],ok=sel!==null,pct=Math.round((cur+1)/Q.length*100);
+var h='<div class="progress"><div class="prog-label"><span>Question '+(cur+1)+' / '+Q.length+'</span><span>'+pct+' %</span></div><div class="prog-bar"><div class="prog-fill" style="width:'+pct+'%"></div></div></div>';
+h+='<div class="question"><div class="q-num">Question '+(cur+1)+'</div><div class="q-text">'+q.q+'</div><ul class="options">';
+for(var i=0;i<q.o.length;i++){
+var cls='opt';
+if(ok){if(i===q.c)cls+=' correct';else if(i===sel)cls+=' wrong';}
+h+='<li class="'+cls+'" data-i="'+i+'"><span class="opt-letter">'+L[i]+'</span><span class="opt-text">'+q.o[i]+'</span></li>';
+}
+h+='</ul>';
+if(ok)h+='<div class="justif"><strong>'+(sel===q.c?'✓ Correct':'✗ Incorrect')+'</strong>'+q.w+'</div>';
+h+='</div><div class="nav-row">';
+h+='<button class="btn btn-ghost" id="prev"'+(cur===0?' disabled':'')+'>← Précédent</button>';
+if(cur<Q.length-1)h+='<button class="btn btn-primary" id="next"'+(ok?'':' disabled')+'>Suivant →</button>';
+else h+='<button class="btn btn-accent" id="finish"'+(ans.indexOf(null)===-1?'':' disabled')+'>Voir score</button>';
+h+='</div>';
+$('quiz').innerHTML=h;
+var opts=$('quiz').querySelectorAll('.opt');
+for(var j=0;j<opts.length;j++){
+(function(li){
+li.onclick=function(){if(ans[cur]!==null)return;ans[cur]=parseInt(li.getAttribute('data-i'),10);render();};
+})(opts[j]);
+}
+var p=$('prev'),n=$('next'),f=$('finish');
+if(p)p.onclick=function(){cur--;render();};
+if(n)n.onclick=function(){cur++;render();};
+if(f)f.onclick=finish;
+}
+function finish(){
+state='result';$('quiz').hidden=true;$('result').hidden=false;
+var s=0;for(var i=0;i<Q.length;i++)if(ans[i]===Q[i].c)s++;
+var pct=Math.round(s/Q.length*100),pass=s>=PASS,lvl=pass?'ok':(s>=5?'warn':'err');
+var v=s>=9?'Excellent — niveau expert':(pass?'Validé — niveau professionnel':(s>=5?'Insuffisant — révisions':'Échec — formation à reprendre'));
+$('result').innerHTML='<div class="score '+lvl+'"><div class="score-val">'+s+' / '+Q.length+'</div><div class="score-lbl">'+pct+' % de réussite</div><div class="score-verdict">'+v+'</div></div><div class="nav-row"><button class="btn btn-ghost" id="review">Revoir</button><button class="btn btn-accent" id="restart">Recommencer</button></div><p style="text-align:center;font-size:12.5px;color:#7b88a3;margin-top:20px">Envie d\'aller plus loin ? <a href="/guide.html" style="color:#0b3d91;font-weight:700">Guide Diagnostic BT →</a></p>';
+$('restart').onclick=start;
+$('review').onclick=function(){cur=0;state='quiz';$('result').hidden=true;$('quiz').hidden=false;render();};
+}
+$('start').onclick=start;
+})();
+</script>
+</body>
+  </html>
