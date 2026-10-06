@@ -27,11 +27,9 @@ h1{font-size:clamp(1.6rem,5vw,2.2rem);font-weight:900;letter-spacing:-.02em;line
 .intro li::before{content:"✓";color:#d4a017;font-weight:900;flex-shrink:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border-radius:12px;font-weight:800;font-size:14.5px;transition:all .15s;white-space:nowrap;text-decoration:none;cursor:pointer;border:0}
 .btn-accent{background:linear-gradient(135deg,#d4a017,#f2c14e);color:#0b3d91;box-shadow:0 8px 20px rgba(212,160,23,.35);width:100%}
-.btn-accent:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(212,160,23,.45)}
+.btn-accent:hover{transform:translateY(-2px)}
 .btn-primary{background:#0b3d91;color:#fff}
-.btn-primary:hover{background:#1565c0}
 .btn-ghost{background:#fff;color:#0b3d91;border:1.5px solid #e2e8f0}
-.btn-ghost:hover{border-color:#0b3d91;background:#e8f0fb}
 .btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
 .progress{margin-bottom:20px}
 .prog-label{display:flex;justify-content:space-between;font-size:12.5px;font-weight:700;color:#4a5876;margin-bottom:6px;font-variant-numeric:tabular-nums}
@@ -116,21 +114,21 @@ var Q=[
 {q:"Seuil de V_N-T déclenchant une vigilance immédiate ?",o:["> 2 V","> 5 V","> 10 V","> 50 V"],c:2,w:"< 5 V normal, 5-10 V à surveiller, > 10 V défaut à investiguer."},
 {q:"Que signifie le régime de neutre TT ?",o:["Neutre à la terre côté source, masses à la terre locale","Neutre isolé","Neutre et masses au même point","Neutre non distribué"],c:0,w:"TT : prise de terre côté transfo, prise de terre locale côté utilisation."},
 {q:"DDR 30 mA déclenche sans surcharge. Cause probable ?",o:["Surtension","Fuite à la terre (défaut isolement)","Neutre rompu","Sous-tension"],c:1,w:"Le DDR détecte les fuites. Déclenchement = courant de fuite > 30 mA."},
-{q:"Ordre correct d'une procédure de consignation ?",o:["Séparer, condamner, identifier, vérifier, baliser","Identifier, séparer, vérifier, baliser, condamner","Vérifier, séparer, identifier, condamner, baliser","Baliser, condamner, identifier, séparer, vérifier"],c:0,w:"Séquence officielle : Séparer → Condamner → Identifier → VAT → Baliser."},
+{q:"Ordre correct d'une procédure de consignation ?",o:["Séparer, condamner, identifier, vérifier, baliser","Identifier, séparer, vérifier, baliser, condamner","Vérifier, séparer, identifier, condamner, baliser","Baliser, condamner, identifier, séparer, vérifier"],c:0,w:"Séquence officielle : Séparer, Condamner, Identifier, VAT, Baliser."},
 {q:"Test de terre à 250 Ω. Que faire ?",o:["Rien, conforme","Signaler terre défectueuse","Ajouter un DDR","Augmenter la section"],c:1,w:"Une terre BT doit être < 100 Ω. 250 Ω est hors norme."},
 {q:"V_N-T = 3 V, V_P-N = 220 V, terre = 1 V. Verdict ?",o:["Faute Senelec","Faute interne","Installation conforme","Manque mesures"],c:2,w:"Les 3 valeurs sont dans les plages normales. Rien à signaler."},
 {q:"Appareil INDISPENSABLE avant contact sur installation hors tension ?",o:["Multimètre ohmmètre","VAT (testeur absence tension)","Pince ampèremétrique","Thermomètre IR"],c:1,w:"Le VAT est l'appareil de sécurité obligatoire. Il doit être testé avant ET après."},
 {q:"Cause la plus fréquente d'échauffement d'une borne ?",o:["Surtension","Mauvais serrage ou oxydation","Section trop importante","Parafoudre"],c:1,w:"Borne mal serrée = résistance de contact élevée = échauffement = incendie."},
-{q:"Quel seuil de chute de tension au démarrage d'une charge révèle un problème ?",o:["2 V","5 V","10 V","> 15 V"],c:3,w:"Une chute > 15 V au démarrage indique une résistance de ligne trop élevée (section ou connexion)."},
+{q:"Chute de tension au démarrage révélant un problème ?",o:["2 V","5 V","10 V","> 15 V"],c:3,w:"Une chute > 15 V au démarrage indique une résistance de ligne trop élevée."},
 {q:"Que signifie NF C 15-100 ?",o:["Norme habilitation électrique","Norme installations électriques BT","Norme câbles haute tension","Norme transformateurs"],c:1,w:"NF C 15-100 : norme française des installations électriques basse tension."},
-{q:"Un relais de tension réglé à 250 V se déclenche. Que faire ?",o:["Désactiver le relais","Vérifier la cause (neutre, phase) puis investiguer","Attendre","Baisser le seuil"],c:1,w:"Ne jamais désactiver une protection. Investiguer la cause (neutre rompu, surtension réseau)."},
-{q:"Que contrôle-t-on au multimètre sur le neutre amont/aval hors charge ?",o:["La tension","La continuité (< 1 Ω)","L'intensité","La fréquence"],c:1,w:"Hors charge, le neutre doit avoir une continuité < 1 Ω. Au-delà : neutre oxydé ou sectionné."},
+{q:"Relais de tension à 250 V se déclenche. Que faire ?",o:["Désactiver le relais","Vérifier la cause puis investiguer","Attendre","Baisser le seuil"],c:1,w:"Ne jamais désactiver une protection. Investiguer la cause (neutre rompu, surtension)."},
+{q:"Contrôle du neutre amont/aval hors charge ?",o:["Tension","Continuité (< 1 Ω)","Intensité","Fréquence"],c:1,w:"Hors charge, le neutre doit avoir une continuité < 1 Ω."},
 {q:"Habilitation BR = ?",o:["Non-électricien","Chargé d'intervention générale","Chargé de consignation","Exécutant"],c:1,w:"BR : chargé d'intervention générale. B0 : non-électricien. BC : chargé de consignation."},
-{q:"Que mesure-t-on avec un thermomètre infrarouge au tableau ?",o:["La tension","L'intensité","La température des connexions","La résistance"],c:2,w:"Il détecte les points chauds : ΔT > 20 °C entre deux bornes voisines = anomalie."},
-{q:"V_P-N = 245 V toute la journée. Que conclure ?",o:["Normal","Surtension à signaler (proche limite haute)","Défaut interne","Rien à signaler"],c:1,w:"245 V est dans la plage mais proche de la limite haute. À surveiller par enregistrement."},
-{q:"Une terre de 60 Ω est-elle conforme en BT résidentiel ?",o:["Oui (< 100 Ω)","Non (> 30 Ω)","Oui si < 200 Ω","Ça dépend du climat"],c:0,w:"La norme exige < 100 Ω pour une terre BT. 60 Ω est conforme mais à surveiller."},
-{q:"Le neutre est-il un conducteur actif en TT ?",o:["Non, c'est une masse","Oui, il transporte le courant de retour","Non, il est inactif","Seulement en triphasé"],c:1,w:"En TT, le neutre est un conducteur actif : il transporte le courant de retour. Il est aussi relié à la terre côté source."},
-{q:"Facture Woyofal anormalement basse pendant 2 mois. Que vérifier ?",o:["Rien, c'est bénéfique","Le compteur (défaut, bypass) et le neutre","La tension seulement","Le DDR"],c:1,w:"Une chute brutale peut signaler un défaut du compteur ou un branchement frauduleux. À investiguer côté Senelec."}
+{q:"Thermomètre infrarouge au tableau : que mesure-t-on ?",o:["Tension","Intensité","Température des connexions","Résistance"],c:2,w:"Il détecte les points chauds : ΔT > 20 °C entre deux bornes voisines = anomalie."},
+{q:"V_P-N = 245 V toute la journée. Que conclure ?",o:["Normal","Proche limite haute, à surveiller","Défaut interne","Rien à signaler"],c:1,w:"245 V est dans la plage mais proche de la limite haute. À surveiller par enregistrement."},
+{q:"Terre à 60 Ω en BT résidentiel ?",o:["Conforme (< 100 Ω)","Non (> 30 Ω)","Conforme si < 200 Ω","Dépend du climat"],c:0,w:"La norme exige < 100 Ω pour une terre BT. 60 Ω est conforme."},
+{q:"Le neutre est-il un conducteur actif en TT ?",o:["Non, c'est une masse","Oui, il transporte le courant de retour","Non, inactif","Seulement en triphasé"],c:1,w:"En TT, le neutre est un conducteur actif : il transporte le courant de retour."},
+{q:"Facture Woyofal anormalement basse. Que vérifier ?",o:["Rien, c'est bénéfique","Le compteur et le neutre","La tension seulement","Le DDR"],c:1,w:"Une chute brutale peut signaler un défaut compteur ou un branchement frauduleux."}
 ];
 var L=['A','B','C','D'],PASS=14,ans=[],cur=0,state='intro';
 function $(id){return document.getElementById(id);}
@@ -146,7 +144,7 @@ if(ok){if(i===q.c)cls+=' correct';else if(i===sel)cls+=' wrong';}
 h+='<li class="'+cls+'" data-i="'+i+'"><span class="opt-letter">'+L[i]+'</span><span class="opt-text">'+q.o[i]+'</span></li>';
 }
 h+='</ul>';
-if(ok)h+='<div class="justif"><strong>'+(sel===q.c?'✓ Correct':'✗ Incorrect')+'</strong>'+q.w+'</div>';
+if(ok)h+='<div class="justif"><strong>'+(sel===q.c?'Correct':'Incorrect')+'</strong>'+q.w+'</div>';
 h+='</div><div class="nav-row">';
 h+='<button class="btn btn-ghost" id="prev"'+(cur===0?' disabled':'')+'>← Précédent</button>';
 if(cur<Q.length-1)h+='<button class="btn btn-primary" id="next"'+(ok?'':' disabled')+'>Suivant →</button>';
@@ -155,9 +153,7 @@ h+='</div>';
 $('quiz').innerHTML=h;
 var opts=$('quiz').querySelectorAll('.opt');
 for(var j=0;j<opts.length;j++){
-(function(li){
-li.onclick=function(){if(ans[cur]!==null)return;ans[cur]=parseInt(li.getAttribute('data-i'),10);render();};
-})(opts[j]);
+(function(li){li.onclick=function(){if(ans[cur]!==null)return;ans[cur]=parseInt(li.getAttribute('data-i'),10);render();};})(opts[j]);
 }
 var p=$('prev'),n=$('next'),f=$('finish');
 if(p)p.onclick=function(){cur--;render();};
@@ -167,8 +163,8 @@ if(f)f.onclick=finish;
 function finish(){
 state='result';$('quiz').hidden=true;$('result').hidden=false;
 var s=0;for(var i=0;i<Q.length;i++)if(ans[i]===Q[i].c)s++;
-var pct=Math.round(s/Q.length*100),pass=s>=PASS,lvl=pass?'ok':(s>=5?'warn':'err');
-var v=s>=9?'Excellent — niveau expert':(pass?'Validé — niveau professionnel':(s>=5?'Insuffisant — révisions':'Échec — formation à reprendre'));
+var pct=Math.round(s/Q.length*100),pass=s>=PASS,lvl=pass?'ok':(s>=10?'warn':'err');
+var v=s>=18?'Excellent — niveau expert':(pass?'Validé — niveau professionnel':(s>=10?'Insuffisant — révisions':'Échec — formation à reprendre'));
 $('result').innerHTML='<div class="score '+lvl+'"><div class="score-val">'+s+' / '+Q.length+'</div><div class="score-lbl">'+pct+' % de réussite</div><div class="score-verdict">'+v+'</div></div><div class="nav-row"><button class="btn btn-ghost" id="review">Revoir</button><button class="btn btn-accent" id="restart">Recommencer</button></div><p style="text-align:center;font-size:12.5px;color:#7b88a3;margin-top:20px">Envie d\'aller plus loin ? <a href="/guide.html" style="color:#0b3d91;font-weight:700">Guide Diagnostic BT →</a></p>';
 $('restart').onclick=start;
 $('review').onclick=function(){cur=0;state='quiz';$('result').hidden=true;$('quiz').hidden=false;render();};
@@ -177,4 +173,4 @@ $('start').onclick=start;
 })();
 </script>
 </body>
-  </html>
+</html>
