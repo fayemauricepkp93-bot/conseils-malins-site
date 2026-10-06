@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b3d91">
+<title>Calculateur Woyofal — Conseils Malins</title>
+<meta name="description" content="Calculez en temps réel les kWh obtenus selon votre recharge Woyofal. Grille tarifaire Senelec 2026.">
+<style>
+:root{
+  --brand:#0b3d91;--brand-2:#1565c0;--brand-3:#e8f0fb;
+  --accent:#d4a017;--accent-2:#f2c14e;--accent-3:#fff8e6;
+  --ink:#0f1c33;--ink-2:#4a5876;--ink-3:#7b88a3;
+  --bg:#f7f9fc;--surface:#fff;--line:#e2e8f0;--line-2:#eef2f6;
+  --ok:#1b7e3f;--ok-bg:#e6f5ec;--err:#b3261e;--err-bg:#fbeae7;
+  --r-sm:6px;--r-md:12px;--r-lg:18px;--r-pill:999px;
+  --ff:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--ff);background:var(--bg);color:var(--ink);
+  line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:40px;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;border:0;cursor:pointer;background:none;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:var(--r-sm)}
+.container{max-width:560px;margin:0 auto;padding:0 16px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* NAV */
+.nav{
+  background:rgba(255,255,255,.95);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;
+}
+.nav__inner{
+  max-width:1120px;margin:0 auto;padding:12px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.nav__back{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:14px;font-weight:700;color:var(--brand);
+}
+.nav__back svg{width:16px;height:16px}
+.nav__logo{display:flex;align-items:center;gap:8px}
+.nav__logo-mark{
+  width:34px;height:34px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  color:var(--brand);display:grid;place-items:center;
+  font-weight:900;font-size:13px;
+}
+.nav__logo-text{display:flex;flex-direction:column;line-height:1.1}
+.nav__logo-text strong{font-size:13px;color:var(--brand)}
+.nav__logo-text small{font-size:9.5px;color:var(--ink-3);font-weight:600;letter-spacing:.04em}
+
+/* HEADER */
+.hero{
+  padding:36px 0 24px;text-align:center;
+  background:radial-gradient(700px 300px at 50% -20%,rgba(212,160,23,.10),transparent 60%);
+}
+.hero h1{
+  font-size:clamp(1.6rem,5vw,2.2rem);font-weight:900;
+  letter-spacing:-.02em;margin-bottom:8px;
+}
+.hero h1 .hl{
+  background:linear-gradient(180deg,transparent 58%,var(--accent-2) 58%);
+  padding:0 4px;
+}
+.hero p{color:var(--ink-2);font-size:14.5px;max-width:440px;margin:0 auto}
+
+/* CARD */
+.card{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:22px;
+  box-shadow:0 8px 24px rgba(11,61,145,.06);
+  margin-bottom:16px;
+}
+.card h2{
+  font-size:15px;font-weight:800;color:var(--brand);
+  letter-spacing:.05em;text-transform:uppercase;
+  margin-bottom:16px;
+}
+
+/* TABS */
+.tabs{
+  display:grid;grid-template-columns:1fr 1fr;gap:4px;
+  padding:4px;background:#f0f3f8;border-radius:var(--r-md);
+  margin-bottom:18px;
+}
+.tabs button{
+  padding:10px 8px;font-size:13.5px;font-weight:700;
+  border-radius:10px;color:var(--ink-2);transition:all .2s;
+}
+.tabs button[aria-selected="true"]{
+  background:#fff;color:var(--brand);
+  box-shadow:0 2px 6px rgba(0,0,0,.06);
+}
+
+/* FIELD */
+.field{margin-bottom:16px}
+.field label{
+  display:block;font-size:12px;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--brand);margin-bottom:6px;
+}
+.field select,.field input{
+  width:100%;padding:13px 14px;font:inherit;font-size:16px;
+  border:1.5px solid var(--line);border-radius:var(--r-md);
+  background:#fff;transition:all .2s;color:var(--ink);
+}
+.field select:focus,.field input:focus{
+  outline:none;border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(212,160,23,.15);
+}
+
+/* RESULT */
+.result{
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  color:var(--brand);border-radius:var(--r-md);
+  padding:22px;text-align:center;margin-bottom:16px;
+}
+.result__label{
+  font-size:11px;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;opacity:.75;margin-bottom:6px;
+}
+.result__value{
+  font-size:2.4rem;font-weight:900;line-height:1;
+  letter-spacing:-.03em;font-variant-numeric:tabular-nums;
+}
+.result__unit{font-size:14px;font-weight:700;opacity:.8;margin-top:4px}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin-bottom:12px}
+th{
+  font-size:10.5px;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-3);
+  text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);
+}
+td{padding:9px 6px;border-bottom:1px solid var(--line-2);color:var(--ink-2)}
+td:last-child,th:last-child{text-align:right;font-weight:700;color:var(--ink)}
+tr:last-child td{border-bottom:0}
+
+/* DETAIL */
+.detail{
+  background:#fafbfd;border-left:3px solid var(--accent);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;
+  padding:12px 14px;font-size:13.5px;line-height:1.7;
+  color:var(--ink-2);margin-bottom:10px;
+}
+.detail strong{color:var(--ink);font-weight:700}
+.detail .row{display:flex;justify-content:space-between;gap:8px}
+.detail .row.total{
+  margin-top:8px;padding-top:8px;
+  border-top:1px dashed var(--line);
+  color:var(--ink);font-weight:700;
+}
+.detail.warn{
+  background:var(--err-bg);border-left-color:var(--err);color:#7f1d1d;
+}
+
+/* NOTE */
+.note{
+  font-size:12px;line-height:1.65;color:var(--ink-3);
+  padding-top:14px;border-top:1px solid var(--line);
+}
+.note strong{color:var(--ink-2);font-weight:700}
+.note ul{list-style:none;padding:0;margin-top:8px}
+.note li{display:flex;gap:8px;margin-bottom:5px}
+.note li::before{content:"›";color:var(--accent);font-weight:800;flex-shrink:0}
+
+/* FOOTER */
+.footer{
+  text-align:center;font-size:12px;color:var(--ink-3);
+  padding:24px 16px 0;
+}
+.footer a{color:var(--brand);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Accueil
+    </a>
+    <div class="nav__logo">
+      <span class="nav__logo-mark">CM</span>
+      <span class="nav__logo-text">
+        <strong>Conseils Malins</strong>
+        <small>Électricité &amp; Réseaux BT</small>
+      </span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <h1>Calculateur <span class="hl">Woyofal</span></h1>
+    <p>Convertissez votre recharge en kWh — ou l'inverse — selon la grille tarifaire Senelec 2026.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="card">
+    <div class="tabs" role="tablist">
+      <button role="tab" id="tab-montant" aria-selected="true" data-mode="montant">Montant → kWh</button>
+      <button role="tab" id="tab-kwh" aria-selected="false" data-mode="kwh">kWh → Montant</button>
+    </div>
+
+    <div class="field">
+      <label for="categorie">Catégorie tarifaire</label>
+      <select id="categorie">
+        <option value="DPP">DPP — Domestique Petite Puissance</option>
+        <option value="DMP">DMP — Domestique Moyenne Puissance</option>
+        <option value="PPP">PPP — Professionnel Petite Puissance</option>
+        <option value="PMP">PMP — Professionnel Moyenne Puissance</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="valeur" id="label-input">Montant de la recharge (FCFA)</label>
+      <input type="number" id="valeur" value="50000" min="0" step="500" inputmode="numeric">
+    </div>
+
+    <div class="result">
+      <div class="result__label" id="total-label">Énergie obtenue</div>
+      <div class="result__value" id="total-value">—</div>
+      <div class="result__unit" id="total-unit">kWh</div>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Tranche</th><th>Quantité</th><th>Prix unit.</th><th>Coût</th></tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+
+    <div class="detail" id="detail-calcul"></div>
+    <div class="detail warn" id="detail-tva" hidden></div>
+
+    <div class="note">
+      <strong>Notes tarifaires :</strong>
+      <ul>
+        <li>Redevance compteur : 429 F/mois (déduite à la 1ère recharge du mois)</li>
+        <li>Taxe communale : 2,5 % appliquée à l'énergie</li>
+        <li>TVA 18 % : uniquement au-delà du seuil de la 2e tranche</li>
+        <li>Redevance d'électrification rurale : intégrée au prix unitaire</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="footer">
+    Outil informatif — non affilié à Senelec. Tarifs indicatifs 2026.<br>
+    <a href="/">← Retour à l'accueil</a>
+  </p>
+</main>
+
+<script>
+(() => {
+'use strict';
+
+const TARIFS = {
+  DPP:{t1:82.00,t2:136.49,seuil1:150,seuil2:250,redevance:429},
+  DMP:{t1:111.23,t2:143.54,seuil1:50,seuil2:300,redevance:429},
+  PPP:{t1:147.43,t2:189.84,seuil1:50,seuil2:500,redevance:429},
+  PMP:{t1:165.01,t2:191.01,seuil1:100,seuil2:500,redevance:429}
+};
+const TX_COMMUNALE = 0.025;
+const TX_TVA = 0.18;
+const MIN_MONTANT = 1000;
+
+const $ = id => document.getElementById(id);
+const fmt = new Intl.NumberFormat('fr-FR',{maximumFractionDigits:2});
+const fmt0 = new Intl.NumberFormat('fr-FR',{maximumFractionDigits:0});
+
+let mode = 'montant';
+
+function kwhFromMontant(montant, tarif){
+  const reste = montant - tarif.redevance;
+  if(reste <= 0) return {error:'redevance'};
+  const taxe = reste * TX_COMMUNALE;
+  let budget = reste - taxe;
+  const budgetInit = budget;
+
+  const kwhT1 = Math.min(tarif.seuil1, budget / tarif.t1);
+  const coutT1 = kwhT1 * tarif.t1;
+  budget -= coutT1;
+  let total = kwhT1;
+
+  let kwhT2 = 0, coutT2 = 0;
+  if(budget > 0 && kwhT1 >= tarif.seuil1 - 1e-6){
+    const dispo = tarif.seuil2 - tarif.seuil1;
+    kwhT2 = Math.min(dispo, budget / tarif.t2);
+    coutT2 = kwhT2 * tarif.t2;
+    budget -= coutT2;
+    total += kwhT2;
+  }
+
+  let kwhT3 = 0, coutT3 = 0;
+  const prixT3 = tarif.t2 * (1 + TX_TVA);
+  if(budget > 0 && total >= tarif.seuil2 - 1e-6){
+    kwhT3 = budget / prixT3;
+    coutT3 = budget;
+    total += kwhT3;
+  }
+
+  return {kwhTotal:total,kwhT1,coutT1,kwhT2,coutT2,kwhT3,coutT3,
+          prixT3,taxe,montant,budgetEnergie:budgetInit};
+}
+
+function montantFromKwh(kwh, tarif){
+  const kwhT1 = Math.min(kwh, tarif.seuil1);
+  const kwhT2 = Math.min(Math.max(kwh - tarif.seuil1, 0), tarif.seuil2 - tarif.seuil1);
+  const kwhT3 = Math.max(kwh - tarif.seuil2, 0);
+  const coutT1 = kwhT1 * tarif.t1;
+  const coutT2 = kwhT2 * tarif.t2;
+  const prixT3 = tarif.t2 * (1 + TX_TVA);
+  const coutT3 = kwhT3 * prixT3;
+  const budget = coutT1 + coutT2 + coutT3;
+  const reste = budget / (1 - TX_COMMUNALE);
+  const taxe = reste * TX_COMMUNALE;
+  const montant = reste + tarif.redevance;
+  return {montant,kwhTotal:kwh,kwhT1,coutT1,kwhT2,coutT2,kwhT3,coutT3,
+          prixT3,taxe,budgetEnergie:budget};
+}
+
+function row(label, value, cls = ''){
+  return `<div class="row ${cls}"><span>${label}</span><span>${value}</span></div>`;
+}
+
+function render(){
+  const cat = $('categorie').value;
+  const tarif = TARIFS[cat];
+  const valeur = parseFloat($('valeur').value);
+
+  if(!Number.isFinite(valeur) || valeur <= 0){
+    $('total-value').textContent = '—';
+    $('tbody').innerHTML = '';
+    $('detail-calcul').innerHTML = '';
+    $('detail-tva').hidden = true;
+    return;
+  }
+
+  let data;
+  if(mode === 'montant'){
+    if(valeur < MIN_MONTANT){
+      $('total-value').textContent = '—';
+      $('total-label').textContent = 'Montant trop faible';
+      $('total-unit').textContent = 'min. 1 000 FCFA';
+      $('tbody').innerHTML = '';
+      $('detail-calcul').innerHTML = '';
+      return;
+    }
+    data = kwhFromMontant(valeur, tarif);
+    if(data.error === 'redevance'){
+      $('total-label').textContent = 'Montant insuffisant';
+      $('total-value').textContent = '—';
+      $('total-unit').textContent = 'Redevance : ' + fmt0.format(tarif.redevance) + ' FCFA';
+      return;
+    }
+    $('total-label').textContent = 'Énergie obtenue';
+    $('total-value').textContent = fmt.format(data.kwhTotal);
+    $('total-unit').textContent = 'kWh';
+  } else {
+    data = montantFromKwh(valeur, tarif);
+    $('total-label').textContent = 'Montant total à payer';
+    $('total-value').textContent = fmt0.format(Math.ceil(data.montant));
+    $('total-unit').textContent = 'FCFA';
+  }
+
+  const tbody = $('tbody');
+  const rows = [];
+  if(data.kwhT1 > 0.005) rows.push(`
+    <tr>
+      <td>1<sup>re</sup> tranche (0–${tarif.seuil1})</td>
+      <td>${fmt.format(data.kwhT1)} kWh</td>
+      <td>${fmt.format(tarif.t1)} F</td>
+      <td>${fmt0.format(data.coutT1)} F</td>
+    </tr>`);
+  if(data.kwhT2 > 0.005) rows.push(`
+    <tr>
+      <td>2<sup>e</sup> tranche (${tarif.seuil1}–${tarif.seuil2})</td>
+      <td>${fmt.format(data.kwhT2)} kWh</td>
+      <td>${fmt.format(tarif.t2)} F</td>
+      <td>${fmt0.format(data.coutT2)} F</td>
+    </tr>`);
+  if(data.kwhT3 > 0.005) rows.push(`
+    <tr>
+      <td>Au-delà de ${tarif.seuil2} <span style="color:var(--err);font-size:11px;font-weight:800">+TVA</span></td>
+      <td>${fmt.format(data.kwhT3)} kWh</td>
+      <td>${fmt.format(data.prixT3)} F</td>
+      <td>${fmt0.format(data.coutT3)} F</td>
+    </tr>`);
+  tbody.innerHTML = rows.join('');
+
+  let detail = '';
+  if(mode === 'montant'){
+    detail += row('Montant saisi', fmt0.format(data.montant) + ' F');
+    detail += row('− Redevance compteur', fmt0.format(tarif.redevance) + ' F');
+    detail += row('− Taxe communale (2,5 %)', fmt0.format(data.taxe) + ' F');
+    detail += row('= Budget énergie', fmt0.format(data.budgetEnergie) + ' F', 'total');
+  } else {
+    detail += row('Consommation saisie', fmt.format(data.kwhTotal) + ' kWh');
+    detail += row('Coût énergie', fmt0.format(data.budgetEnergie) + ' F');
+    detail += row('+ Taxe communale (2,5 %)', fmt0.format(data.taxe) + ' F');
+    detail += row('+ Redevance compteur', fmt0.format(tarif.redevance) + ' F');
+    detail += row('= Montant à payer', fmt0.format(data.montant) + ' F', 'total');
+  }
+  $('detail-calcul').innerHTML = detail;
+
+  const tvaBox = $('detail-tva');
+  if(data.kwhT3 > 0.005){
+    tvaBox.hidden = false;
+    tvaBox.innerHTML = `<strong>Attention — TVA appliquée.</strong><br>
+      Consommation supérieure à ${tarif.seuil2} kWh. TVA 18 % appliquée sur la partie excédentaire — prix réel : <strong>${fmt.format(data.prixT3)} F/kWh</strong>.`;
+  } else {
+    tvaBox.hidden = true;
+  }
+}
+
+function setMode(newMode){
+  mode = newMode;
+  document.querySelectorAll('.tabs button').forEach(b => {
+    b.setAttribute('aria-selected', b.dataset.mode === newMode);
+  });
+  if(newMode === 'montant'){
+    $('label-input').textContent = 'Montant de la recharge (FCFA)';
+    $('valeur').step = '500';
+    $('valeur').value = '50000';
+  } else {
+    $('label-input').textContent = 'Consommation souhaitée (kWh)';
+    $('valeur').step = '1';
+    $('valeur').value = '100';
+  }
+  render();
+}
+
+document.querySelectorAll('.tabs button').forEach(btn => {
+  btn.addEventListener('click', () => setMode(btn.dataset.mode));
+});
+['input','change'].forEach(evt => {
+  $('valeur').addEventListener(evt, render);
+  $('categorie').addEventListener(evt, render);
+});
+
+setMode('montant');
+})();
+</script>
+</body>
+  </html>
