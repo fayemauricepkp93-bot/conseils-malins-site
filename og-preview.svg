@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="navy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b3d91"/>
+      <stop offset="100%" stop-color="#1565c0"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4a017"/>
+      <stop offset="100%" stop-color="#f2c14e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d4a017" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Fond bleu -->
+  <rect width="1200" height="630" fill="url(#navy)"/>
+  <circle cx="1000" cy="150" r="400" fill="url(#glow)"/>
+
+  <!-- Logo CM en haut à gauche -->
+  <circle cx="130" cy="115" r="55" fill="url(#gold)"/>
+  <text x="130" y="115"
+        font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif"
+        font-size="62"
+        font-weight="900"
+        fill="#0b3d91"
+        text-anchor="middle"
+        dominant-baseline="central"
+        letter-spacing="-3">CM</text>
+
+  <!-- Nom Conseils Malins -->
+  <text x="210" y="105"
+        font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif"
+        font-size="46"
+        font-weight="900"
+        fill="#ffffff"
+        letter-spacing="-1">Conseils Malins</text>
+  <text x="210" y="145"
+        font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif"
+        font-size="18"
+        font-weight="700"
+        fill="#f2c14e"
+        letter-spacing="3">ÉLECTRICITÉ &amp; RÉSEAUX BT</text>
+
+  <!-- Badge en haut à droite -->
+  <rect x="880" y="85" width="270" height="60" rx="30"
+        fill="none" stroke="#f2c14e" stroke-width="2" opacity="0.6"/>
+  <text x="1015" y="115"
+        font-family="-apple-system, Arial, sans-serif"
+        font-size="15"
+        font-weight="800"
+        fill="#f2c14e"
+        text-anchor="middle"
+        dominant-baseline="central"
+        letter-spacing="2">ENSEIGNANT AGRÉÉ MEN</text>
+
+  <!-- Titre principal -->
+  <text x="600" y="330"
+        font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif"
+        font-size="72"
+        font-weight="900"
+        fill="#ffffff"
+        text-anchor="middle"
+        letter-spacing="-2">L'outillage complet</text>
+
+  <text x="600" y="415"
+        font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif"
+        font-size="72"
+        font-weight="900"
+        fill="#f2c14e"
+        text-anchor="middle"
+        letter-spacing="-2">pour les pros BT</text>
+
+  <!-- Trait doré sous le titre -->
+  <rect x="500" y="455" width="200" height="5" rx="2.5" fill="#f2c14e"/>
+
+  <!-- Sous-titre -->
+  <text x="600" y="510"
+        font-family="-apple-system, Arial, sans-serif"
+        font-size="24"
+        font-weight="600"
+        fill="#ffffff"
+        text-anchor="middle"
+        opacity="0.85">Diagnostic réseau · Calculateur Woyofal · QCM</text>
+
+  <!-- URL en bas -->
+  <text x="600" y="580"
+        font-family="-apple-system, Arial, sans-serif"
+        font-size="18"
+        font-weight="700"
+        fill="#f2c14e"
+        text-anchor="middle"
+        letter-spacing="1">conseils-malins-mf.netlify.app</text>
+</svg>
