@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b3d91">
+<meta name="robots" content="noindex">
+<title>Politique de confidentialité — Conseils Malins</title>
+<meta name="description" content="Politique de confidentialité de Conseils Malins — Comment nous protégeons vos données personnelles.">
+<style>
+:root{
+  --brand:#0b3d91;--brand-2:#1565c0;--brand-3:#e8f0fb;
+  --accent:#d4a017;--accent-2:#f2c14e;--accent-3:#fff8e6;
+  --ink:#0f1c33;--ink-2:#4a5876;--ink-3:#7b88a3;
+  --bg:#f7f9fc;--surface:#fff;--line:#e2e8f0;--line-2:#eef2f6;
+  --ok:#1b7e3f;--ok-bg:#e6f5ec;
+  --r-sm:6px;--r-md:12px;--r-lg:18px;--r-pill:999px;
+  --ff:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--bg);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;padding-bottom:40px}
+a{color:var(--brand);text-decoration:none;font-weight:600}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:var(--r-sm)}
+.container{max-width:720px;margin:0 auto;padding:0 16px}
+
+/* NAV */
+.nav{background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.nav__inner{max-width:1120px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav__back{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:var(--brand)}
+.nav__back svg{width:16px;height:16px}
+.nav__logo{display:flex;align-items:center;gap:8px}
+.nav__logo-mark{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:var(--brand);display:grid;place-items:center;font-weight:900;font-size:13px}
+.nav__logo-text{display:flex;flex-direction:column;line-height:1.1}
+.nav__logo-text strong{font-size:13px;color:var(--brand)}
+.nav__logo-text small{font-size:9.5px;color:var(--ink-3);font-weight:600;letter-spacing:.04em}
+
+/* HERO */
+.hero{padding:36px 0 24px;text-align:center;background:radial-gradient(700px 300px at 50% -20%,rgba(212,160,23,.10),transparent 60%)}
+.hero__badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:var(--r-pill);background:var(--brand-3);color:var(--brand);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+.hero__badge::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.hero h1{font-size:clamp(1.6rem,5vw,2.2rem);font-weight:900;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
+.hero h1 .hl{background:linear-gradient(180deg,transparent 58%,var(--accent-2) 58%);padding:0 4px}
+.hero p{color:var(--ink-2);font-size:14.5px;max-width:520px;margin:0 auto}
+
+/* CONTENT */
+.content{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px 22px;box-shadow:0 8px 24px rgba(11,61,145,.05);margin-bottom:20px}
+.content h2{font-size:1.1rem;font-weight:800;color:var(--brand);margin:26px 0 12px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.content h2:first-child{margin-top:0}
+.content h2::before{content:"";width:4px;height:20px;background:linear-gradient(180deg,var(--accent),var(--accent-2));border-radius:2px}
+.content h3{font-size:15px;font-weight:700;color:var(--brand-2);margin:18px 0 8px}
+.content p{font-size:14.5px;color:var(--ink-2);margin-bottom:12px}
+.content p:last-child{margin-bottom:0}
+.content ul{list-style:none;padding:0;margin-bottom:12px}
+.content ul li{position:relative;padding-left:20px;font-size:14.5px;color:var(--ink-2);margin-bottom:6px;line-height:1.65}
+.content ul li::before{content:"•";position:absolute;left:6px;top:-2px;color:var(--accent);font-weight:900;font-size:18px}
+.content strong{color:var(--ink);font-weight:700}
+.content .info-block{background:#fafbfd;border-left:3px solid var(--accent);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:14px 16px;margin:14px 0;font-size:14px;color:var(--ink-2);line-height:1.75}
+.content .info-block strong{color:var(--brand);display:inline}
+.content .success{background:var(--ok-bg);border-left:3px solid var(--ok);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:14px 16px;margin:14px 0;font-size:14px;color:#14532d;line-height:1.75;font-weight:600}
+
+/* DATE */
+.updated{text-align:center;font-size:12px;color:var(--ink-3);font-style:italic;margin-top:24px;padding-top:16px;border-top:1px solid var(--line-2)}
+
+/* FOOTER */
+.footer{text-align:center;font-size:12px;color:var(--ink-3);padding:24px 16px 0}
+.footer a{color:var(--brand);font-weight:600}
+
+@media(min-width:640px){
+  .hero{padding:48px 0 28px}
+  .content{padding:32px 28px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Accueil
+    </a>
+    <div class="nav__logo">
+      <span class="nav__logo-mark">CM</span>
+      <span class="nav__logo-text">
+        <strong>Conseils Malins</strong>
+        <small>Électricité &amp; Réseaux BT</small>
+      </span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero__badge">Informations juridiques</div>
+    <h1>Politique de <span class="hl">confidentialité</span></h1>
+    <p>Comment nous collectons, utilisons et protégeons vos données personnelles.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <article class="content">
+
+    <div class="success">
+      ✅ <strong>Notre engagement :</strong> Conseils Malins ne collecte <strong>aucune donnée automatiquement</strong> et ne revend <strong>jamais</strong> vos informations à des tiers.
+    </div>
+
+    <h2>Article 1 — Responsable du traitement</h2>
+    <p>Le responsable du traitement des données est :</p>
+    <div class="info-block">
+      <p><strong>Conseils Malins</strong><br>
+      Cabinet de conseil technique — Électricité &amp; Réseaux Basse Tension<br>
+      Thiès, Sénégal<br>
+      <strong>Email :</strong> <a href="mailto:mboudaysrvices@gmail.com">mboudaysrvices@gmail.com</a><br>
+      <strong>WhatsApp :</strong> <a href="https://wa.me/221786874960" target="_blank" rel="noopener">+221 78 687 49 60</a></p>
+    </div>
+
+    <h2>Article 2 — Ce site ne collecte rien automatiquement</h2>
+    <p>Contrairement à la majorité des sites web, <strong>conseils-malins-mf.netlify.app ne collecte aucune donnée personnelle de manière automatique</strong>.</p>
+    <p>Nous n'utilisons :</p>
+    <ul>
+      <li>❌ Aucun cookie de traçage</li>
+      <li>❌ Aucun outil d'analyse (Google Analytics, etc.)</li>
+      <li>❌ Aucun pixel publicitaire (Facebook, TikTok, etc.)</li>
+      <li>❌ Aucun formulaire d'inscription</li>
+      <li>❌ Aucune création de compte obligatoire</li>
+    </ul>
+    <p>Vous pouvez utiliser librement nos outils (calculateur Woyofal, QCM, guide) sans communiquer la moindre information personnelle.</p>
+
+    <h2>Article 3 — Fonctionnement local des outils</h2>
+    <p>Tous les outils interactifs du site fonctionnent <strong>intégralement dans votre navigateur</strong>. Cela signifie que :</p>
+    <ul>
+      <li>Les montants saisis dans le calculateur Woyofal <strong>ne sont jamais envoyés à un serveur</strong>.</li>
+      <li>Les réponses au QCM <strong>restent sur votre appareil</strong>.</li>
+      <li>Les données de progression (checklist) sont stockées dans votre navigateur uniquement (<em>localStorage</em>) et ne quittent jamais votre téléphone.</li>
+    </ul>
+    <div class="info-block">
+      💡 <strong>Vous pouvez tester le calculateur avec des montants personnels</strong> sans aucune crainte : aucune information n'est transmise, aucune trace n'est conservée côté serveur.
+    </div>
+
+    <h2>Article 4 — Données que vous nous transmettez volontairement</h2>
+    <p>Certaines données nous sont transmises uniquement lorsque <strong>vous choisissez de nous contacter ou de commander</strong> :</p>
+
+    <h3>Via WhatsApp</h3>
+    <ul>
+      <li>Votre numéro de téléphone (visible automatiquement)</li>
+      <li>Le contenu de votre message</li>
+      <li>Les informations que vous choisissez de partager (nom, adresse si nécessaire)</li>
+    </ul>
+
+    <h3>Via email</h3>
+    <ul>
+      <li>Votre adresse email</li>
+      <li>Le contenu de votre message</li>
+      <li>Les éventuelles pièces jointes</li>
+    </ul>
+
+    <h3>Lors d'une commande</h3>
+    <ul>
+      <li>Nom et prénom</li>
+      <li>Coordonnées (téléphone, email)</li>
+      <li>Formule commandée</li>
+      <li>Preuve de paiement (capture)</li>
+      <li>Pour les entreprises : NINEA / RCCM pour la facture</li>
+    </ul>
+
+    <h2>Article 5 — Utilisation de vos données</h2>
+    <p>Les données que vous nous transmettez sont utilisées <strong>uniquement</strong> pour :</p>
+    <ul>
+      <li>Répondre à votre demande ou question</li>
+      <li>Traiter et livrer votre commande</li>
+      <li>Assurer le support technique (formule Pro)</li>
+      <li>Émettre une facture si vous le demandez</li>
+      <li>Vous informer des mises à jour du produit acheté</li>
+    </ul>
+    <p>Vos données ne sont <strong>jamais utilisées pour</strong> :</p>
+    <ul>
+      <li>❌ De la publicité</li>
+      <li>❌ De la revente à des tiers</li>
+      <li>❌ Du profilage ou de l'analyse comportementale</li>
+      <li>❌ De l'envoi de newsletters non sollicitées</li>
+    </ul>
+
+    <h2>Article 6 — Partage des données</h2>
+    <p>Conseils Malins ne partage vos données avec <strong>aucun tiers commercial</strong>.</p>
+    <p>Les seuls prestataires techniques impliqués sont :</p>
+    <ul>
+      <li><strong>Netlify</strong> (hébergement du site) — héberge uniquement les fichiers HTML/CSS/JS, aucune donnée client.</li>
+      <li><strong>WhatsApp / Meta</strong> (messagerie) — chiffrement de bout en bout, politique de confidentialité Meta applicable.</li>
+      <li><strong>Gmail / Google</strong> (email) — politique de confidentialité Google applicable.</li>
+      <li><strong>Wave / Orange Money / Free Money</strong> (paiements) — traitement sécurisé, aucune donnée bancaire ne nous est transmise.</li>
+    </ul>
+
+    <h2>Article 7 — Durée de conservation</h2>
+    <p>Vos données sont conservées pendant les durées suivantes :</p>
+    <ul>
+      <li><strong>Messages WhatsApp ou email</strong> : 3 ans maximum à compter du dernier échange, puis suppression.</li>
+      <li><strong>Données de commande et factures</strong> : 10 ans (obligation légale comptable).</li>
+      <li><strong>Preuves de paiement</strong> : 3 ans.</li>
+    </ul>
+
+    <h2>Article 8 — Sécurité</h2>
+    <p>Nous mettons en œuvre les mesures suivantes pour protéger vos données :</p>
+    <ul>
+      <li>Site hébergé sur <strong>Netlify</strong> avec HTTPS obligatoire et protection DDoS.</li>
+      <li>Communications WhatsApp <strong>chiffrées de bout en bout</strong>.</li>
+      <li>Messagerie email protégée par mot de passe fort et authentification à deux facteurs.</li>
+      <li>Aucune base de données publique ne stocke vos informations.</li>
+    </ul>
+
+    <h2>Article 9 — Vos droits</h2>
+    <p>Conformément à la <strong>loi sénégalaise n° 2008-12 du 25 janvier 2008 sur la protection des données personnelles</strong>, vous disposez des droits suivants :</p>
+    <ul>
+      <li><strong>Droit d'accès</strong> : savoir quelles données nous détenons sur vous.</li>
+      <li><strong>Droit de rectification</strong> : corriger des informations inexactes.</li>
+      <li><strong>Droit de suppression</strong> : demander l'effacement de vos données.</li>
+      <li><strong>Droit d'opposition</strong> : refuser un traitement particulier.</li>
+      <li><strong>Droit à la portabilité</strong> : récupérer vos données dans un format lisible.</li>
+    </ul>
+    <p>Pour exercer ces droits, contactez-nous à :</p>
+    <div class="info-block">
+      📧 <strong>Email :</strong> <a href="mailto:mboudaysrvices@gmail.com">mboudaysrvices@gmail.com</a><br>
+      💬 <strong>WhatsApp :</strong> <a href="https://wa.me/221786874960" target="_blank" rel="noopener">+221 78 687 49 60</a>
+      <p style="margin-top:8px;font-size:13px">Nous répondrons dans un délai maximum de 30 jours.</p>
+    </div>
+
+    <h2>Article 10 — Cookies</h2>
+    <p>Le site <strong>n'utilise aucun cookie</strong>. Aucun bandeau de consentement n'est donc nécessaire.</p>
+    <p>Les seuls stockages locaux utilisés (via <em>localStorage</em>) concernent :</p>
+    <ul>
+      <li>Vos réponses au QCM (pour vous permettre de reprendre l'évaluation)</li>
+      <li>L'état de votre checklist terrain</li>
+    </ul>
+    <p>Ces données restent <strong>sur votre appareil</strong> et disparaissent si vous videz le cache de votre navigateur.</p>
+
+    <h2>Article 11 — Mineurs</h2>
+    <p>Le site et ses produits sont destinés à des <strong>professionnels et étudiants en électrotechnique</strong>. Aucune donnée n'est sciemment collectée auprès de mineurs de moins de 16 ans sans consentement parental.</p>
+
+    <h2>Article 12 — Modifications de la politique</h2>
+    <p>Conseils Malins se réserve le droit de modifier cette politique de confidentialité à tout moment. La version en vigueur est celle publiée sur cette page, avec la date de dernière mise à jour.</p>
+
+    <h2>Article 13 — Contact</h2>
+    <p>Pour toute question relative à la protection de vos données :</p>
+    <ul>
+      <li><strong>Email :</strong> <a href="mailto:mboudaysrvices@gmail.com">mboudaysrvices@gmail.com</a></li>
+      <li><strong>WhatsApp :</strong> <a href="https://wa.me/221786874960" target="_blank" rel="noopener">+221 78 687 49 60</a></li>
+    </ul>
+
+    <p class="updated">Dernière mise à jour : 7 octobre 2026 · Version 1.0</p>
+
+  </article>
+
+  <p class="footer">
+    <strong>Conseils Malins</strong> · Réf. CM-DIAG-BT-001<br>
+    <a href="/">← Retour à l'accueil</a> · 
+    <a href="/mentions-legales.html">Mentions légales</a> · 
+    <a href="/cgv.html">CGV</a>
+  </p>
+
+</main>
+
+</body>
+  </html>
