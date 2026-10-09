@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tome 4 — Recueil Pro Schémas | CCM</title>
+<style>
+@page{size:A4;margin:15mm 12mm}
+:root{--b:#0b3d91;--b2:#1565c0;--b3:#e8f0fb;--a:#d4a017;--a2:#f2c14e;--ink:#0f1c33;--i2:#4a5876;--i3:#7b88a3;--l:#e2e8f0;--l2:#eef2f6;--ok:#1b7e3f;--okbg:#e6f5ec;--warn:#b26a00;--warnbg:#fdf1e3;--err:#b3261e;--errbg:#fbeae7;--ff:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--mono:'Courier New',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--ff);background:#e8ecf1;color:var(--ink);line-height:1.65;font-size:14.5px;padding:20px 0}
+.cover-wrap{max-width:820px;margin:0 auto 24px}
+.cover{text-align:center;padding:60px 40px 40px;background:linear-gradient(135deg,#0b3d91 0%,#1565c0 100%);color:#fff;border-radius:12px;position:relative;overflow:hidden;min-height:880px;display:flex;flex-direction:column;justify-content:space-between}
+.cover::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(212,160,23,.15),transparent 50%);pointer-events:none}
+.cover>*{position:relative;z-index:1}
+.cv-logo{display:inline-flex;align-items:center;gap:14px;padding:10px 20px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);font-size:13px;font-weight:800;letter-spacing:.08em;margin-bottom:30px}
+.cv-mark{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--a),var(--a2));color:var(--b);display:grid;place-items:center;font-weight:900;font-size:15px}
+.cv-badge{display:inline-block;padding:6px 16px;border-radius:999px;background:rgba(212,160,23,.25);border:1px solid rgba(212,160,23,.5);color:var(--a2);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px;white-space:nowrap}
+.cover h1{font-size:34px;font-weight:900;line-height:1.15;margin:0 auto 22px;color:#fff;word-break:break-word;padding:0 6px}
+.cover h1 .a{color:var(--a2);display:block;margin-top:4px}
+.cv-sub{font-size:16px;color:#fff;max-width:520px;margin:0 auto 18px;font-weight:500;text-shadow:0 1px 4px rgba(0,0,0,.35)}
+.cv-sub .ad{color:var(--a2);font-style:italic;font-size:15px;display:block;margin-top:6px}
+.cv-vols{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:18px 0}
+.cv-vol{padding:9px 18px;border-radius:999px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);font-size:12px;font-weight:700;color:#fff}
+.cv-qr{margin:16px 0 6px}
+.cv-qrbox{display:inline-block;background:#fff;padding:10px;border-radius:10px;border:3px solid var(--a);width:150px;height:150px;vertical-align:middle}
+.cv-qrbox img{display:block;width:130px;height:130px;margin:0 auto;border-radius:5px}
+.qr-fb{color:var(--b);font-size:11px;text-align:center;padding:44px 8px;font-weight:bold;line-height:1.35}
+.cv-qrleg{font-size:11px;color:var(--a2);font-style:italic;margin-top:8px}
+.cv-meta{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:540px;margin:20px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.25)}
+.cv-mi{text-align:left}
+.cv-mi dt{font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--a2);margin-bottom:3px}
+.cv-mi dd{font-size:14px;font-weight:600;color:#fff}
+.cv-contact{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.25);font-size:11px;color:#cdd9e5;line-height:1.7}
+.cv-contact strong{color:var(--a2)}
+nav.toc{background:#fff;padding:12px 14px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.08);display:flex;flex-wrap:wrap;gap:5px;justify-content:center;max-width:820px;margin:0 auto 20px;border-radius:8px}
+nav.toc a{text-decoration:none;color:var(--b);background:var(--b3);padding:5px 10px;border-radius:16px;font-size:12px;font-weight:600}
+nav.toc a:hover{background:var(--b);color:#fff}
+.page{max-width:820px;margin:0 auto 24px;background:#fff;padding:32px 38px;box-shadow:0 4px 20px rgba(0,0,0,.08);border-radius:8px;border-left:6px solid var(--b)}
+h2{font-size:22px;font-weight:900;color:var(--b);margin:0 0 20px;padding-bottom:10px;border-bottom:3px solid var(--a);display:flex;align-items:center;gap:12px}
+h2 .n{display:inline-block;background:var(--b);color:var(--a2);width:32px;height:32px;border-radius:50%;text-align:center;line-height:32px;font-size:14px;font-weight:900;flex-shrink:0}
+h3{font-size:17px;font-weight:800;color:var(--b2);margin:24px 0 12px;border-bottom:1px dashed var(--a);padding-bottom:6px}
+h4{font-size:14.5px;font-weight:800;color:var(--b2);margin:16px 0 8px}
+p{margin-bottom:12px;color:var(--i2)}
+strong{color:var(--ink);font-weight:700}
+ul,ol{padding-left:22px;margin-bottom:14px}
+li{color:var(--i2);margin-bottom:6px;line-height:1.6}
+.co{padding:14px 18px;border-radius:8px;margin:16px 0;font-size:14px;line-height:1.7;border-left:4px solid}
+.co-i{background:var(--b3);border-color:var(--b);color:#0a2a5c}
+.co-i strong{color:var(--b)}
+.co-w{background:var(--warnbg);border-color:var(--a);color:#7c3a00}
+.co-w strong{color:var(--warn)}
+.co-s{background:var(--okbg);border-color:var(--ok);color:#14532d}
+.co-s strong{color:var(--ok)}
+.co-d{background:var(--errbg);border-color:var(--err);color:#7f1d1d}
+.co-d strong{color:var(--err)}
+.tw{overflow-x:auto;margin:16px 0;border:1px solid var(--l);border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff}
+th{background:var(--b);color:#fff;padding:10px 12px;text-align:left;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+td{padding:10px 12px;border-top:1px solid var(--l2);color:var(--i2);vertical-align:top;line-height:1.5}
+td:first-child{color:var(--ink);font-weight:700}
+tr:nth-child(even) td{background:#fafbfd}
+.sw{background:#fafbfd;border:2px solid var(--l);border-radius:12px;padding:15px;margin:18px 0;overflow-x:auto}
+.sw svg{width:100%;max-width:760px;display:block;margin:0 auto;background:#fff;border-radius:8px}
+.st{text-align:center;font-weight:700;color:var(--b);margin-bottom:10px;font-size:15px}
+.cb{background:linear-gradient(135deg,#f8fafc,#eef3fb);border:2px solid var(--b2);border-radius:14px;padding:20px;margin:18px 0}
+.cr{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.cr label{display:block;font-size:13px;font-weight:600;color:var(--b);margin-bottom:5px}
+.cr input,.cr select{width:100%;padding:10px 12px;border:2px solid var(--l);border-radius:8px;font-size:14px;background:#fff;font-family:inherit}
+.cr input:focus,.cr select:focus{border-color:var(--b2);outline:none}
+.bc{background:var(--b);color:#fff;border:none;padding:12px 24px;border-radius:25px;font-weight:700;cursor:pointer;font-size:14px;width:100%;margin-top:6px;font-family:inherit}
+.bc:hover{background:var(--b2)}
+.cres{margin-top:16px;padding:16px;border-radius:10px;background:#fff;border-left:5px solid var(--ok);display:none;font-size:14px}
+.cres.show{display:block}
+.cres .v{display:inline-block;background:var(--b);color:#fff;padding:3px 12px;border-radius:15px;font-weight:700;margin:2px 0}
+.cres .al{color:var(--err);font-weight:700}
+.qb{background:#fff;border:2px solid var(--l);border-radius:14px;padding:22px;margin:18px 0}
+.q{margin-bottom:22px;padding-bottom:18px;border-bottom:1px dashed var(--l)}
+.q:last-of-type{border-bottom:none}
+.qt{font-weight:700;color:var(--b);margin-bottom:10px;font-size:14px}
+.q label{display:block;padding:9px 14px;margin-bottom:6px;background:#f8fafc;border:2px solid transparent;border-radius:8px;cursor:pointer;font-size:13.5px}
+.q label:hover{background:var(--b3);border-color:var(--b2)}
+.q input[type=radio]{margin-right:8px}
+.q label.ok{background:#e8f5e9!important;border-color:var(--ok)!important;font-weight:600}
+.q label.ko{background:#ffebee!important;border-color:var(--err)!important;text-decoration:line-through}
+.ex{margin-top:8px;padding:10px 14px;background:var(--b3);border-left:4px solid var(--b);border-radius:6px;font-size:12.5px;display:none}
+.ex.show{display:block}
+.qa{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.bq{padding:12px 22px;border-radius:25px;font-weight:700;border:none;cursor:pointer;font-size:13.5px;font-family:inherit}
+.bv{background:var(--ok);color:#fff}
+.bv:hover{background:#1b5e20}
+.br{background:#e0e0e0;color:#333}
+.br:hover{background:#bdbdbd}
+.sb{margin-top:18px;padding:18px;border-radius:10px;text-align:center;font-size:16px;font-weight:700;display:none}
+.sb.show{display:block}
+.sb.exc{background:#e8f5e9;color:var(--ok);border:2px solid var(--ok)}
+.sb.moy{background:#fff8e1;color:var(--warn);border:2px solid var(--warn)}
+.sb.fai{background:#ffebee;color:var(--err);border:2px solid var(--err)}
+.ctb{background:linear-gradient(135deg,#0b3d91,#1565c0);color:#fff;padding:28px;border-radius:12px;text-align:center;margin:20px 0}
+.ctb h2{color:#fff;border-bottom-color:var(--a2);justify-content:center}
+.ctb p{color:#cdd9e5;margin:6px 0}
+.ctb strong{color:var(--a2)}
+.fn{margin-top:30px;padding-top:20px;border-top:2px solid var(--a);text-align:center;font-size:11.5px;color:var(--i3);line-height:1.7}
+.fn strong{color:var(--b)}
+.tb{position:fixed;bottom:20px;right:20px;z-index:99}
+.bt{padding:14px 26px;border-radius:999px;font:inherit;font-weight:800;font-size:14px;border:2px solid var(--a);cursor:pointer;background:linear-gradient(135deg,var(--b),var(--b2));color:var(--a2);box-shadow:0 8px 24px rgba(11,61,145,.4)}
+.tp{position:fixed;bottom:22px;left:22px;background:var(--b);color:#fff;border:none;width:48px;height:48px;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.25);display:none;z-index:200}
+@media print{
+body{background:#fff;padding:0;font-size:10pt}
+.page{max-width:none;margin:0;padding:20px 15px;box-shadow:none;border-radius:0;border-left:none;page-break-after:always}
+.cover-wrap{max-width:none}
+.cover{min-height:auto;padding:50px 30px;border-radius:0;page-break-after:always}
+nav.toc,.tb,.tp,.bc,.qa{display:none!important}
+h2{page-break-after:avoid}
+.tw,.sw,.cb,.qb,.co,.ctb{page-break-inside:avoid}
+th,.cover,.ctb{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media (max-width:600px){
+.cover h1{font-size:24px}.cover{padding:30px 15px}.page{padding:20px 18px}
+.cr{grid-template-columns:1fr}nav.toc a{font-size:10px;padding:4px 8px}
+}
+</style>
+</head>
+<body>
+
+<div class="cover-wrap">
+<div class="cover">
+<div>
+<div class="cv-logo"><span class="cv-mark">CM</span><span>CONSEILS MALINS</span></div>
+<div class="cv-badge">Tome 4 · CCM-TOM4-2026</div>
+<h1>Recueil Pro<span class="a">Schémas Électriques</span></h1>
+<p class="cv-sub">Tome 4 · Collection Expert Énergie<span class="ad">Symbolique · Câblage · Protections · QCM interactif · Calculateur</span></p>
+<div class="cv-vols">
+<span class="cv-vol">Élèves-électriciens</span>
+<span class="cv-vol">Techniciens de chantier</span>
+</div>
+<div class="cv-qr">
+<div class="cv-qrbox"><div id="qr-cover" style="width:130px;height:130px"><div class="qr-fb">Chargement QR...</div></div></div>
+<p class="cv-qrleg">Scannez pour nous contacter sur WhatsApp</p>
+</div>
+</div>
+<div>
+<div class="cv-meta">
+<div class="cv-mi"><dt>Auteur</dt><dd>Maurice Faye</dd></div>
+<div class="cv-mi"><dt>Habilitation</dt><dd>Enseignant agréé MEN</dd></div>
+<div class="cv-mi"><dt>Public</dt><dd>Apprentis &amp; Techniciens</dd></div>
+<div class="cv-mi"><dt>Édition</dt><dd>2026 — Édition 1.0</dd></div>
+</div>
+<div class="cv-contact">
+<strong>Cabinet Conseils Malins</strong> · NINEA 005056413 JV4<br>
+Thiès · Dakar · Sénégal<br>
+WhatsApp <strong>+221 78 687 49 60</strong> · Email <strong>bougazeli@gmail.com</strong><br>
+Assistance diagnostic <strong>+221 78 360 77 77</strong><br>
+<em style="color:var(--a2)">Label Karangué-Elec — Conformité NF C 15-100 · Sécurité · Optimisation durable</em>
+</div>
+</div>
+</div>
+</div>
+
+<nav class="toc">
+<a href="#av">Avant-propos</a>
+<a href="#c1">Symbolique</a>
+<a href="#c2">Montages</a>
+<a href="#c3">Schémas</a>
+<a href="#c4">Circuits spéciaux</a>
+<a href="#c5">Diagnostic</a>
+<a href="#calc">Calculateur</a>
+<a href="#qcm">QCM</a>
+<a href="#exos">Exercices</a>
+<a href="#ct">Contact</a>
+</nav>
+
+<div class="page" id="av">
+<h2><span class="n">§</span>Avant-propos</h2>
+<p>Ce manuel technique s'adresse directement aux <strong>élèves-électriciens</strong>, aux <strong>étudiants en électrotechnique</strong> ainsi qu'aux <strong>professionnels du bâtiment</strong>. Conçu comme une référence de terrain et un outil d'apprentissage progressif, il rassemble l'ensemble des connaissances théoriques, normalisées et pratiques nécessaires à la conception, la réalisation et le dépannage des installations électriques résidentielles et tertiaires.</p>
+<h3>Objectifs pédagogiques</h3>
+<div class="co co-i">
+<ul style="list-style:none;padding:0;margin:0">
+<li style="padding:5px 0">✓ Maîtriser la lecture et le traçage des schémas développés, unifilaires, multifilaires et architecturaux</li>
+<li style="padding:5px 0">✓ Dimensionner rigoureusement les câbles et appareillages de protection</li>
+<li style="padding:5px 0">✓ Exécuter les travaux dans le respect strict de la <strong>NF C 15-100</strong> et des spécificités du réseau sénégalais</li>
+<li style="padding:5px 0">✓ Intégrer les protections contre les variations de tension et le raccordement du compteur <strong>Woyofal</strong></li>
+<li style="padding:5px 0">✓ Appliquer une méthodologie rigoureuse de diagnostic et de recherche de pannes</li>
+</ul>
+</div>
+</div>
+
+<div class="page" id="c1">
+<h2><span class="n">1</span>Symbolique &amp; code couleur</h2>
+<h3>1.1 Symbolique normalisée</h3>
+<div class="tw"><table>
+<thead><tr><th>Équipement</th><th>Schéma Architectural</th><th>Schéma Développé</th></tr></thead>
+<tbody>
+<tr><td>Interrupteur simple allumage</td><td>Cercle + trait simple à crochet</td><td>Contact ouvert manœuvrable</td></tr>
+<tr><td>Interrupteur va-et-vient</td><td>Cercle + 2 crochets opposés</td><td>Inverseur unipolaire 2 positions</td></tr>
+<tr><td>Bouton poussoir</td><td>Cercle + point central</td><td>Contact NO à ressort</td></tr>
+<tr><td>Prise 2P+T</td><td>Demi-cercle + barre verticale</td><td>Deux bornes + PE</td></tr>
+<tr><td>Foyer lumineux</td><td>Croix dans un cercle</td><td>Cercle traversé d'une croix</td></tr>
+<tr><td>Télétupteur</td><td>— (placé au tableau)</td><td>Bobine + contact puissance</td></tr>
+</tbody>
+</table></div>
+
+<h3>1.2 Code couleur</h3>
+<div class="tw"><table>
+<thead><tr><th>Conducteur</th><th>Couleur obligatoire</th><th>Rôle</th></tr></thead>
+<tbody>
+<tr><td>Phase (L)</td><td>Rouge / Marron / Noir</td><td>Alimentation</td></tr>
+<tr><td>Neutre (N)</td><td>Bleu clair</td><td>Retour de courant</td></tr>
+<tr><td>Terre (PE)</td><td>Vert / Jaune (bicolore)</td><td>Protection des personnes</td></tr>
+<tr><td>Navette</td><td>Orange / Violet / Gris</td><td>Liaison entre interrupteurs</td></tr>
+<tr><td>Retour lampe</td><td>Autre couleur</td><td>Commutation vers récepteur</td></tr>
+</tbody>
+</table></div>
+<div class="co co-d"><strong>Interdiction absolue :</strong> le Vert/Jaune est strictement réservé au conducteur de protection. Interdit comme phase ou neutre.</div>
+
+<h3>1.3 Sections &amp; calibres</h3>
+<div class="tw"><table>
+<thead><tr><th>Circuit</th><th>Section cuivre</th><th>Disjoncteur</th><th>Usage</th></tr></thead>
+<tbody>
+<tr><td>Éclairage</td><td>1,5 mm²</td><td>10 A ou 16 A</td><td>Points lumineux</td></tr>
+<tr><td>Prises banalisées</td><td>2,5 mm²</td><td>16 A ou 20 A</td><td>Prises 2P+T</td></tr>
+<tr><td>Climatiseur</td><td>2,5 à 4 mm²</td><td>16 A à 20 A</td><td>Ligne dédiée</td></tr>
+<tr><td>Chauffe-eau</td><td>2,5 mm²</td><td>16 A ou 20 A</td><td>Ligne dédiée</td></tr>
+<tr><td>Four / Plaque</td><td>4 à 6 mm²</td><td>20 A à 32 A</td><td>Ligne dédiée</td></tr>
+<tr><td>Alimentation générale</td><td>16 à 25 mm²</td><td>Selon abonnement</td><td>Amont tableau</td></tr>
+</tbody>
+</table></div>
+
+<h3>1.4 Différentiel 30 mA : Type AC vs Type A</h3>
+<div class="co co-i">
+<p><strong>Type AC :</strong> protège les circuits standards (éclairage, prises banalisées, convecteurs). Détecte les fuites alternatives pures.</p>
+<p><strong>Type A :</strong> <strong>obligatoire</strong> pour circuits avec composants électroniques (plaques induction, lave-linge, climatiseurs Inverter, chargeurs). Détecte les fuites à composante continue.</p>
+</div>
+</div>
+
+<div class="page" id="c2">
+<h2><span class="n">2</span>Montages d'éclairage</h2>
+<h3>2.1 Simple allumage (SA)</h3>
+<p><strong>Principe :</strong> commander un ou plusieurs foyers lumineux depuis un seul point. La phase alimente l'entrée de l'interrupteur. Le retour de lampe part de la sortie vers le premier pôle du luminaire. Le second pôle du luminaire est raccordé au neutre.</p>
+<div class="co co-i"><strong>Astuce :</strong> tirer une gaine à 2 fils vers l'interrupteur (Phase + Retour) et une gaine à 3 fils vers le luminaire (Retour + Neutre + Terre).</div>
+
+<h3>2.2 Double allumage (DA)</h3>
+<p><strong>Principe :</strong> commander séparément deux circuits d'éclairage depuis un même emplacement. Une borne d'entrée commune pour la phase. Deux bornes de sortie distinctes : Retour A et Retour B. Neutre et Terre distribués en parallèle.</p>
+
+<h3>2.3 Va-et-vient (VV)</h3>
+<p><strong>Principe :</strong> commander un même point lumineux depuis deux points distants. Deux inverseurs unipolaires. Phase → borne commune (L) du VV1. Deux navettes relient les bornes 1 et 2 du VV1 aux bornes 1 et 2 du VV2. Borne commune du VV2 → retour lampe.</p>
+
+<h3>2.4 Télétupteur</h3>
+<p><strong>Principe :</strong> commander un circuit depuis 3 points ou plus avec des boutons-poussoirs (NO).</p>
+<ul>
+<li><strong>Circuit de commande :</strong> Phase → boutons en parallèle → borne A1 de la bobine → A2 → Neutre.</li>
+<li><strong>Circuit de puissance :</strong> Phase → borne 1 → borne 2 (contact) → retour lampe.</li>
+</ul>
+
+<h3>2.5 Minuterie d'escalier</h3>
+<p><strong>Principe :</strong> allumage depuis plusieurs boutons avec extinction automatique après temporisation réglable. Montage standard en 4 fils.</p>
+</div>
+
+<div class="page" id="c3">
+<h2><span class="n">3</span>Schémas techniques illustrés</h2>
+<p>Chaque schéma est vectoriel : net à n'importe quel niveau de zoom. Couleurs conformes <strong>NF C 15-100</strong>.</p>
+
+<div class="st">① Simple Allumage — Schéma développé</div>
+<div class="sw">
+<svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg">
+<defs><pattern id="vj" width="14" height="4" patternUnits="userSpaceOnUse"><rect width="7" height="4" fill="#2e7d32"/><rect x="7" width="7" height="4" fill="#ffcc00"/></pattern></defs>
+<text x="20" y="45" font-family="Arial" font-size="13" font-weight="bold" fill="#d32f2f">Phase (L)</text>
+<line x1="20" y1="55" x2="160" y2="55" stroke="#d32f2f" stroke-width="3"/>
+<polygon points="95,48 110,55 95,62" fill="#d32f2f"/>
+<circle cx="170" cy="55" r="5" fill="#333"/>
+<line x1="175" y1="55" x2="230" y2="35" stroke="#333" stroke-width="3"/>
+<circle cx="235" cy="30" r="5" fill="#333"/>
+<text x="145" y="90" font-family="Arial" font-size="12" font-weight="bold" fill="#333">Interrupteur</text>
+<text x="145" y="105" font-family="Arial" font-size="11" fill="#666">(simple allumage)</text>
+<line x1="240" y1="30" x2="440" y2="30" stroke="#ef6c00" stroke-width="3"/>
+<text x="285" y="22" font-family="Arial" font-size="12" fill="#ef6c00" font-weight="bold">Retour lampe</text>
+<circle cx="470" cy="75" r="35" fill="none" stroke="#333" stroke-width="3"/>
+<line x1="445" y1="50" x2="495" y2="100" stroke="#333" stroke-width="3"/>
+<line x1="495" y1="50" x2="445" y2="100" stroke="#333" stroke-width="3"/>
+<line x1="470" y1="30" x2="470" y2="40" stroke="#ef6c00" stroke-width="3"/>
+<line x1="470" y1="110" x2="470" y2="125" stroke="#1976d2" stroke-width="3"/>
+<text x="450" y="160" font-family="Arial" font-size="13" font-weight="bold" fill="#333">Lampe</text>
+<text x="20" y="115" font-family="Arial" font-size="13" font-weight="bold" fill="#1976d2">Neutre (N)</text>
+<line x1="20" y1="125" x2="470" y2="125" stroke="#1976d2" stroke-width="3"/>
+<line x1="505" y1="75" x2="560" y2="75" stroke="url(#vj)" stroke-width="5"/>
+<line x1="560" y1="75" x2="560" y2="195" stroke="url(#vj)" stroke-width="5"/>
+<line x1="540" y1="200" x2="580" y2="200" stroke="#2e7d32" stroke-width="4"/>
+<line x1="546" y1="210" x2="574" y2="210" stroke="#2e7d32" stroke-width="3"/>
+<line x1="552" y1="220" x2="568" y2="220" stroke="#2e7d32" stroke-width="2"/>
+<text x="525" y="245" font-family="Arial" font-size="12" fill="#2e7d32" font-weight="bold">Terre (PE)</text>
+<text x="500" y="262" font-family="Arial" font-size="10" fill="#666">vers masse du luminaire</text>
+</svg>
+</div>
+<div class="co co-s"><strong>Conforme :</strong> la Terre est reliée à la masse du luminaire, jamais au neutre.</div>
+
+<div class="st">② Va-et-Vient — Schéma développé</div>
+<div class="sw">
+<svg viewBox="0 0 780 340" xmlns="http://www.w3.org/2000/svg">
+<defs><pattern id="vj2" width="14" height="4" patternUnits="userSpaceOnUse"><rect width="7" height="4" fill="#2e7d32"/><rect x="7" width="7" height="4" fill="#ffcc00"/></pattern></defs>
+<text x="15" y="35" font-family="Arial" font-size="13" font-weight="bold" fill="#d32f2f">Phase (L)</text>
+<line x1="15" y1="45" x2="130" y2="45" stroke="#d32f2f" stroke-width="3"/>
+<rect x="130" y="65" width="90" height="140" rx="8" fill="#fff" stroke="#0b3d91" stroke-width="2.5"/>
+<text x="150" y="88" font-family="Arial" font-size="13" font-weight="bold" fill="#0b3d91">VV1</text>
+<line x1="130" y1="45" x2="155" y2="45" stroke="#d32f2f" stroke-width="3"/>
+<line x1="155" y1="45" x2="155" y2="120" stroke="#d32f2f" stroke-width="3"/>
+<circle cx="155" cy="120" r="4" fill="#333"/>
+<line x1="155" y1="120" x2="185" y2="100" stroke="#333" stroke-width="2.5"/>
+<circle cx="185" cy="100" r="4" fill="#333"/>
+<circle cx="185" cy="140" r="4" fill="#333"/>
+<text x="140" y="180" font-family="Arial" font-size="10" fill="#666">Commun : L</text>
+<text x="170" y="195" font-family="Arial" font-size="10" fill="#666">Sorties : 1, 2</text>
+<line x1="190" y1="100" x2="560" y2="100" stroke="#ef6c00" stroke-width="3"/>
+<line x1="190" y1="140" x2="560" y2="140" stroke="#9c27b0" stroke-width="3"/>
+<text x="340" y="93" font-family="Arial" font-size="12" fill="#ef6c00" font-weight="bold">Navette 1</text>
+<text x="340" y="158" font-family="Arial" font-size="12" fill="#9c27b0" font-weight="bold">Navette 2</text>
+<rect x="560" y="65" width="90" height="140" rx="8" fill="#fff" stroke="#0b3d91" stroke-width="2.5"/>
+<text x="580" y="88" font-family="Arial" font-size="13" font-weight="bold" fill="#0b3d91">VV2</text>
+<circle cx="585" cy="100" r="4" fill="#333"/>
+<circle cx="585" cy="140" r="4" fill="#333"/>
+<line x1="585" y1="100" x2="610" y2="120" stroke="#333" stroke-width="2.5"/>
+<circle cx="610" cy="120" r="4" fill="#333"/>
+<line x1="610" y1="120" x2="610" y2="45" stroke="#ef6c00" stroke-width="3"/>
+<text x="565" y="180" font-family="Arial" font-size="10" fill="#666">Sortie : retour</text>
+<line x1="610" y1="45" x2="700" y2="45" stroke="#ef6c00" stroke-width="3"/>
+<text x="625" y="30" font-family="Arial" font-size="12" fill="#ef6c00" font-weight="bold">Vers lampe →</text>
+<text x="15" y="290" font-family="Arial" font-size="13" font-weight="bold" fill="#1976d2">Neutre (N)</text>
+<line x1="15" y1="300" x2="760" y2="300" stroke="#1976d2" stroke-width="3"/>
+<line x1="730" y1="220" x2="730" y2="290" stroke="url(#vj2)" stroke-width="5"/>
+<line x1="715" y1="295" x2="745" y2="295" stroke="#2e7d32" stroke-width="3"/>
+<text x="700" y="315" font-family="Arial" font-size="11" fill="#2e7d32" font-weight="bold">PE</text>
+</svg>
+</div>
+<div class="co co-i"><strong>Règle :</strong> les deux navettes relient toujours les bornes 1-1 et 2-2 entre VV1 et VV2.</div>
+
+<div class="st">③ Télétupteur — Commande + puissance</div>
+<div class="sw">
+<svg viewBox="0 0 780 380" xmlns="http://www.w3.org/2000/svg">
+<defs><pattern id="vj3" width="14" height="4" patternUnits="userSpaceOnUse"><rect width="7" height="4" fill="#2e7d32"/><rect x="7" width="7" height="4" fill="#ffcc00"/></pattern></defs>
+<text x="15" y="30" font-family="Arial" font-size="13" font-weight="bold" fill="#d32f2f">Phase (L)</text>
+<line x1="15" y1="40" x2="200" y2="40" stroke="#d32f2f" stroke-width="3"/>
+<rect x="200" y="20" width="120" height="130" rx="8" fill="#f8fafc" stroke="#0b3d91" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="215" y="42" font-family="Arial" font-size="11" font-weight="bold" fill="#0b3d91">Boutons NO</text>
+<text x="215" y="58" font-family="Arial" font-size="11" fill="#0b3d91">(en parallèle)</text>
+<circle cx="220" cy="85" r="3.5" fill="#333"/><line x1="220" y1="85" x2="245" y2="75" stroke="#333" stroke-width="2"/><circle cx="248" cy="75" r="3.5" fill="#333"/><text x="260" y="80" font-family="Arial" font-size="10" fill="#333">BP1</text>
+<circle cx="220" cy="115" r="3.5" fill="#333"/><line x1="220" y1="115" x2="245" y2="105" stroke="#333" stroke-width="2"/><circle cx="248" cy="105" r="3.5" fill="#333"/><text x="260" y="110" font-family="Arial" font-size="10" fill="#333">BP2</text>
+<circle cx="220" cy="140" r="3.5" fill="#333"/><line x1="220" y1="140" x2="245" y2="130" stroke="#333" stroke-width="2"/><circle cx="248" cy="130" r="3.5" fill="#333"/><text x="260" y="135" font-family="Arial" font-size="10" fill="#333">BP3</text>
+<line x1="320" y1="85" x2="440" y2="85" stroke="#d32f2f" stroke-width="2.5" stroke-dasharray="6,3"/>
+<text x="355" y="78" font-family="Arial" font-size="11" fill="#d32f2f" font-weight="bold">Commande</text>
+<rect x="440" y="40" width="170" height="230" rx="10" fill="#fff" stroke="#0b3d91" stroke-width="2.5"/>
+<text x="475" y="65" font-family="Arial" font-size="13" font-weight="bold" fill="#0b3d91">TÉLÉRUPTEUR</text>
+<rect x="465" y="85" width="120" height="45" rx="6" fill="#e3f2fd" stroke="#1e5fc4" stroke-width="2"/>
+<text x="500" y="112" font-family="Arial" font-size="12" font-weight="bold" fill="#0b3d91">Bobine</text>
+<text x="452" y="100" font-family="Arial" font-size="11" fill="#333">A1</text>
+<text x="592" y="100" font-family="Arial" font-size="11" fill="#333">A2</text>
+<rect x="465" y="170" width="120" height="45" rx="6" fill="#fff8e1" stroke="#ef6c00" stroke-width="2"/>
+<text x="480" y="197" font-family="Arial" font-size="11" font-weight="bold" fill="#ef6c00">Contact</text>
+<text x="452" y="185" font-family="Arial" font-size="11" fill="#333">1</text>
+<text x="592" y="185" font-family="Arial" font-size="11" fill="#333">2</text>
+<line x1="15" y1="40" x2="15" y2="200" stroke="#d32f2f" stroke-width="3"/>
+<line x1="15" y1="200" x2="455" y2="200" stroke="#d32f2f" stroke-width="3"/>
+<circle cx="465" cy="192" r="4" fill="#333"/>
+<line x1="592" y1="192" x2="720" y2="192" stroke="#ef6c00" stroke-width="3"/>
+<text x="620" y="185" font-family="Arial" font-size="11" fill="#ef6c00" font-weight="bold">Retour</text>
+<text x="620" y="215" font-family="Arial" font-size="11" fill="#ef6c00" font-weight="bold">Lampe →</text>
+<text x="15" y="340" font-family="Arial" font-size="13" font-weight="bold" fill="#1976d2">Neutre (N)</text>
+<line x1="15" y1="350" x2="760" y2="350" stroke="#1976d2" stroke-width="3"/>
+<line x1="592" y1="130" x2="592" y2="350" stroke="#1976d2" stroke-width="3"/>
+<line x1="720" y1="192" x2="720" y2="350" stroke="#1976d2" stroke-width="3"/>
+<line x1="700" y1="260" x2="700" y2="340" stroke="url(#vj3)" stroke-width="5"/>
+<line x1="685" y1="345" x2="715" y2="345" stroke="#2e7d32" stroke-width="3"/>
+<text x="670" y="365" font-family="Arial" font-size="11" fill="#2e7d32" font-weight="bold">PE</text>
+</svg>
+</div>
+<div class="co co-w"><strong>Attention :</strong> ne jamais inverser A1 et A2 de la bobine (destruction). Vérifier la tension de bobine (230 V AC).</div>
+
+<div class="st">④ Compteur Woyofal — Raccordement</div>
+<div class="sw">
+<svg viewBox="0 0 780 320" xmlns="http://www.w3.org/2000/svg">
+<defs><pattern id="vj4" width="14" height="4" patternUnits="userSpaceOnUse"><rect width="7" height="4" fill="#2e7d32"/><rect x="7" width="7" height="4" fill="#ffcc00"/></pattern></defs>
+<rect x="20" y="110" width="120" height="90" rx="8" fill="#e3f2fd" stroke="#0b3d91" stroke-width="2.5"/>
+<text x="45" y="140" font-family="Arial" font-size="12" font-weight="bold" fill="#0b3d91">SENELEC</text>
+<text x="40" y="160" font-family="Arial" font-size="10" fill="#333">Réseau</text>
+<text x="45" y="175" font-family="Arial" font-size="10" fill="#333">Distribution</text>
+<line x1="140" y1="135" x2="250" y2="135" stroke="#d32f2f" stroke-width="3"/>
+<text x="160" y="127" font-family="Arial" font-size="11" fill="#d32f2f" font-weight="bold">Phase</text>
+<line x1="140" y1="175" x2="250" y2="175" stroke="#1976d2" stroke-width="3"/>
+<text x="160" y="193" font-family="Arial" font-size="11" fill="#1976d2" font-weight="bold">Neutre</text>
+<rect x="250" y="80" width="200" height="150" rx="10" fill="#fff8e1" stroke="#ef6c00" stroke-width="3"/>
+<text x="275" y="108" font-family="Arial" font-size="13" font-weight="bold" fill="#ef6c00">COMPTEUR WOYOFAL</text>
+<text x="295" y="132" font-family="Arial" font-size="10" fill="#333">Entrées : 1 (L) / 3 (N)</text>
+<text x="295" y="155" font-family="Arial" font-size="10" fill="#333">Sorties : 2 (L) / 4 (N)</text>
+<text x="285" y="185" font-family="Arial" font-size="10" fill="#d32f2f" font-weight="bold">⚠ Respecter polarité</text>
+<text x="275" y="202" font-family="Arial" font-size="10" fill="#d32f2f" font-weight="bold">Neutre séparé obligatoire</text>
+<line x1="450" y1="110" x2="560" y2="110" stroke="#d32f2f" stroke-width="3"/>
+<text x="475" y="102" font-family="Arial" font-size="11" fill="#d32f2f" font-weight="bold">L sortie (2)</text>
+<line x1="450" y1="155" x2="560" y2="155" stroke="#1976d2" stroke-width="3"/>
+<text x="475" y="175" font-family="Arial" font-size="11" fill="#1976d2" font-weight="bold">N sortie (4)</text>
+<rect x="560" y="90" width="80" height="90" rx="8" fill="#fff" stroke="#0b3d91" stroke-width="2.5"/>
+<text x="570" y="115" font-family="Arial" font-size="11" font-weight="bold" fill="#0b3d91">Disj.</text>
+<text x="567" y="130" font-family="Arial" font-size="11" font-weight="bold" fill="#0b3d91">Général</text>
+<text x="575" y="155" font-family="Arial" font-size="10" fill="#333">40-60 A</text>
+<line x1="640" y1="135" x2="740" y2="135" stroke="#0b3d91" stroke-width="4"/>
+<text x="650" y="125" font-family="Arial" font-size="11" fill="#0b3d91" font-weight="bold">→ Tableau</text>
+<line x1="350" y1="230" x2="350" y2="285" stroke="url(#vj4)" stroke-width="5"/>
+<line x1="330" y1="290" x2="370" y2="290" stroke="#2e7d32" stroke-width="3"/>
+<text x="290" y="315" font-family="Arial" font-size="11" fill="#2e7d32" font-weight="bold">Terre principale</text>
+</svg>
+</div>
+<div class="co co-s"><strong>Bonne pratique :</strong> la borne 4 (Neutre sortie) du Woyofal ne doit jamais être reliée à un autre neutre du réseau.</div>
+
+<div class="st">⑤ Interrupteur Différentiel 30 mA — Branchement tableau</div>
+<div class="sw">
+<svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg">
+<defs><pattern id="vj5" width="14" height="4" patternUnits="userSpaceOnUse"><rect width="7" height="4" fill="#2e7d32"/><rect x="7" width="7" height="4" fill="#ffcc00"/></pattern></defs>
+<text x="20" y="45" font-family="Arial" font-size="12" font-weight="bold" fill="#d32f2f">L entrée</text>
+<line x1="20" y1="55" x2="180" y2="55" stroke="#d32f2f" stroke-width="3"/>
+<text x="20" y="115" font-family="Arial" font-size="12" font-weight="bold" fill="#1976d2">N entrée</text>
+<line x1="20" y1="125" x2="180" y2="125" stroke="#1976d2" stroke-width="3"/>
+<rect x="180" y="30" width="220" height="130" rx="10" fill="#fff" stroke="#0b3d91" stroke-width="3"/>
+<text x="215" y="60" font-family="Arial" font-size="13" font-weight="bold" fill="#0b3d91">DIFFÉRENTIEL</text>
+<text x="240" y="85" font-family="Arial" font-size="14" font-weight="bold" fill="#d32f2f">30 mA</text>
+<text x="225" y="110" font-family="Arial" font-size="11" fill="#333">Test : bouton T</text>
+<text x="220" y="135" font-family="Arial" font-size="11" font-weight="bold" fill="#ef6c00">Type A ou AC</text>
+<text x="430" y="45" font-family="Arial" font-size="12" font-weight="bold" fill="#d32f2f">L sortie</text>
+<line x1="400" y1="55" x2="600" y2="55" stroke="#d32f2f" stroke-width="3"/>
+<text x="430" y="115" font-family="Arial" font-size="12" font-weight="bold" fill="#1976d2">N sortie</text>
+<line x1="400" y1="125" x2="600" y2="125" stroke="#1976d2" stroke-width="3"/>
+<line x1="290" y1="160" x2="290" y2="215" stroke="url(#vj5)" stroke-width="5"/>
+<line x1="270" y1="220" x2="310" y2="220" stroke="#2e7d32" stroke-width="3"/>
+<text x="255" y="250" font-family="Arial" font-size="11" fill="#2e7d32" font-weight="bold">Terre principale</text>
+</svg>
+</div>
+</div>
+
+<div class="page" id="c4">
+<h2><span class="n">4</span>Circuits spéciaux &amp; protections</h2>
+<h3>4.1 Prises 2P+T</h3>
+<p>Le repiquage entre socles est autorisé dans la limite de :</p>
+<ul>
+<li><strong>8 prises maximum</strong> pour une section de 1,5 mm² (16 A)</li>
+<li><strong>12 prises maximum</strong> pour une section de 2,5 mm² (20 A)</li>
+</ul>
+<div class="co co-w"><strong>Interdit :</strong> insérer deux fils sous la même borne à vis si elle n'est pas prévue pour.</div>
+
+<h3>4.2 Circuits climatisation &amp; chauffe-eau</h3>
+<p>Ces équipements exigent des <strong>lignes dédiées directes</strong> depuis le tableau, sans prise intermédiaire.</p>
+<ul>
+<li><strong>Climatiseur :</strong> prévoir un interrupteur sectionneur mural bipolaire à proximité de l'unité extérieure.</li>
+<li><strong>Chauffe-eau :</strong> associer à un contacteur Jour/Nuit ou à une horloge modulaire.</li>
+</ul>
+
+<h3>4.3 Protections réseau (Sénégal)</h3>
+<p><strong>Relais de tension :</strong> mesure en permanence la tension efficace. Si &lt; 170 V ou &gt; 250 V, isole l'installation. Remise sous tension après temporisation réglable (ex : 180 s).</p>
+<p><strong>Parafoudre (SPD) :</strong> installé en amont du tableau, relié à la terre principale. Protège contre les surtensions atmosphériques.</p>
+
+<h3>4.4 Raccordement Woyofal</h3>
+<ul>
+<li>Bornes : <strong>1 (L entrée) / 3 (N entrée) / 2 (L sortie) / 4 (N sortie)</strong>.</li>
+<li><strong>Séparation stricte des neutres.</strong></li>
+<li>Vérifier la continuité de la terre avant mise en service.</li>
+</ul>
+</div>
+
+<div class="page" id="c5">
+<h2><span class="n">5</span>Méthodologie de diagnostic</h2>
+<h3>5.1 Diagnostic déclenchement 30 mA</h3>
+<div class="co co-w">
+<p><strong>Étape 1 — Isolement global</strong></p>
+<p>Abaisser tous les disjoncteurs divisionnaires. Réarmer le 30 mA.</p>
+<ul>
+<li><strong>Saute immédiatement ?</strong> → Différentiel HS ou Neutre/peigne en court-circuit → Remplacer ou vérifier le câblage du tableau.</li>
+<li><strong>Tient ?</strong> → Passer à l'étape 2.</li>
+</ul>
+</div>
+<div class="co co-w">
+<p><strong>Étape 2 — Identification du circuit fautif</strong></p>
+<p>Réarmer les disjoncteurs un par un. Le disjoncteur X fait sauter le 30 mA ? → Circuit X en défaut.</p>
+</div>
+<div class="co co-w">
+<p><strong>Étape 3 — Localisation précise</strong></p>
+<ol>
+<li>Ouvrir le disjoncteur X.</li>
+<li>Débrancher tous les récepteurs du circuit.</li>
+<li>Mégohmmètre 500 V DC : Phase↔Terre, Neutre↔Terre.</li>
+<li>Résultat attendu : <strong>&gt; 0,5 MΩ</strong>. Si &lt; 0,5 MΩ → câble endommagé.</li>
+</ol>
+</div>
+
+<h3>5.2 Chutes de tension</h3>
+<ol>
+<li>Mesurer V_vide au tableau général.</li>
+<li>Connecter la charge maximale du circuit à tester.</li>
+<li>Mesurer V_charge aux bornes du récepteur distant.</li>
+<li>Calculer la chute en pourcentage.</li>
+</ol>
+<div class="co co-i"><strong>Formule :</strong> ΔU (%) = [(V_vide − V_charge) / V_vide] × 100</div>
+<div class="tw"><table>
+<thead><tr><th>Type de circuit</th><th>Chute max tolérée</th></tr></thead>
+<tbody>
+<tr><td>Éclairage</td><td>3 %</td></tr>
+<tr><td>Autres usages (prises, clim)</td><td>5 %</td></tr>
+</tbody>
+</table></div>
+</div>
+
+<div class="page" id="calc">
+<h2><span class="n">⚡</span>Calculateur de section &amp; chute de tension</h2>
+<p>Renseignez les paramètres de votre circuit pour obtenir une <strong>recommandation automatique</strong> de section, disjoncteur et vérification de la chute de tension.</p>
+<div class="cb">
+<div class="cr">
+<div><label for="pw">Puissance totale (W)</label><input type="number" id="pw" value="2200" min="1"></div>
+<div><label for="tv">Tension réseau (V)</label><input type="number" id="tv" value="230" min="1"></div>
+</div>
+<div class="cr">
+<div><label for="lg">Longueur du câble (m)</label><input type="number" id="lg" value="25" min="1"></div>
+<div><label for="tp">Type de circuit</label><select id="tp">
+<option value="eclairage">Éclairage</option>
+<option value="prise" selected>Prises de courant</option>
+<option value="clim">Climatisation</option>
+<option value="chauffe">Chauffe-eau / Puissance</option>
+</select></div>
+</div>
+<div class="cr">
+<div><label for="cp">Facteur de puissance cos φ</label><input type="number" id="cp" value="0.9" step="0.05" min="0.5" max="1"></div>
+<div><label for="ph">Type de phase</label><select id="ph">
+<option value="mono" selected>Monophasé (230 V)</option>
+<option value="tri">Triphasé (400 V)</option>
+</select></div>
+</div>
+<button class="bc" onclick="calcSec()">⚡ Calculer</button>
+<div class="cres" id="cres"></div>
+</div>
+</div>
+
+<div class="page" id="qcm">
+<h2><span class="n">📝</span>QCM Auto-corrigé — 15 questions</h2>
+<p>Testez votre maîtrise des fondamentaux. Cliquez sur <strong>« Valider mes réponses »</strong> pour obtenir votre score et les explications.</p>
+<div class="qb" id="qc"></div>
+<div class="qa">
+<button class="bq bv" onclick="validQ()">✅ Valider mes réponses</button>
+<button class="bq br" onclick="resetQ()">🔄 Recommencer</button>
+</div>
+<div class="sb" id="sbox"></div>
+</div>
+
+<div class="page" id="exos">
+<h2><span class="n">📚</span>Exercices &amp; études de cas</h2>
+<h3>Exercice 1 — Va-et-vient avec prise (chambre)</h3>
+<p><strong>Énoncé :</strong> Dans une chambre, installer un VV1 près de la porte et un ensemble VV2 + prise 2P+T en tête de lit. Rédiger la liste des liaisons à effectuer dans la boîte de dérivation.</p>
+
+<h3>Exercice 2 — Étude de cas Appartement T3</h3>
+<p><strong>Équipements :</strong></p>
+<ul>
+<li>12 points lumineux LED (2 circuits)</li>
+<li>14 prises banalisées</li>
+<li>2 climatiseurs 9000 BTU + 1 climatiseur 18000 BTU</li>
+<li>1 chauffe-eau 1500 W</li>
+<li>1 four 2200 W + 1 lave-linge 2000 W</li>
+</ul>
+<p><strong>Travail demandé :</strong> tableau de répartition, sections et calibres, puissance foisonnée (Kf = 0,7), découpage sous les différentiels 30 mA.</p>
+
+<h3>Corrigé Exercice 2 — Bilan de puissance</h3>
+<p><strong>Puissance totale installée :</strong> 90 + 90 + 2000 + 2000 + 900 + 900 + 1800 + 1500 + 2200 + 2000 = <strong>13 480 W</strong></p>
+<p><strong>Puissance foisonnée (Kf = 0,7) :</strong> 13 480 × 0,7 = <strong>9 436 W</strong></p>
+<p><strong>Courant d'emploi (230 V, cos φ = 0,9) :</strong> I = 9 436 / (230 × 0,9) ≈ <strong>45,5 A</strong> → disjoncteur d'abonné 45 A ou 60 A.</p>
+<div class="co co-i"><strong>Conseil :</strong> prévoir 20 % de réserve d'emplacements libres dans le tableau. Contrôle du serrage des bornes à 24 h.</div>
+</div>
+
+<div class="page" id="ct">
+<div class="ctb">
+<h2><span class="n">📞</span>Contact &amp; commande</h2>
+<p><strong>Cabinet Conseils Malins</strong></p>
+<p>Expertise Électrique • Audit Énergétique • Diagnostic Bâtiment</p>
+<p>📍 Thiès, Sénégal</p>
+<p>📱 WhatsApp : <strong>+221 78 687 49 60</strong></p>
+<p>📱 Assistance : <strong>+221 78 360 77 77</strong></p>
+<p>✉️ Email : <strong>bougazeli@gmail.com</strong></p>
+<p>📄 NINEA : 005056413 JV4</p>
+</div>
+<div class="fn">
+<p><strong>CABINET CONSEILS MALINS</strong></p>
+<p>Tome 4 — Recueil Pro Schémas Électriques · Réf. CCM-TOM4-2026 · Édition 2026</p>
+<p>© 2026 Cabinet Conseils Malins · Maurice Faye<br>Enseignant agréé Ministère de l'Éducation Nationale du Sénégal</p>
+</div>
+</div>
+
+<div class="tb"><button class="bt" onclick="window.print()">📄 Télécharger en PDF</button></div>
+<button class="tp" id="tp" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+var QS=[
+{q:"Quelle est la couleur obligatoire du conducteur de protection (Terre) ?",o:["Bleu clair","Vert/Jaune bicolore","Rouge","Noir"],c:1,e:"Le PE est exclusivement bicolore Vert/Jaune selon la NF C 15-100."},
+{q:"Quelle section minimale pour un circuit d'éclairage en cuivre ?",o:["0,75 mm²","1,5 mm²","2,5 mm²","4,0 mm²"],c:1,e:"1,5 mm² est la section minimale pour l'éclairage (disjoncteur 10 A ou 16 A)."},
+{q:"Quel calibre de disjoncteur pour une prise en 2,5 mm² ?",o:["10 A","16 A","20 A","25 A"],c:2,e:"2,5 mm² supporte un disjoncteur jusqu'à 20 A."},
+{q:"Un interrupteur différentiel 30 mA protège contre :",o:["Les surtensions","Les contacts indirects et directs","Les courts-circuits","Les sous-tensions"],c:1,e:"Le 30 mA protège les personnes contre les contacts indirects et directs."},
+{q:"Dans un va-et-vient, combien de navettes ?",o:["1","2","3","4"],c:1,e:"Deux navettes relient les bornes 1-1 et 2-2 des deux interrupteurs."},
+{q:"Quel différentiel pour un climatiseur Inverter ?",o:["Type AC","Type A","Type B","Type F"],c:1,e:"Le Type A est obligatoire pour circuits avec composants électroniques."},
+{q:"Dans un télétupteur, quelle borne reçoit le retour de poussoir ?",o:["1","2","A1","A2"],c:2,e:"Le retour de poussoir excite A1 de la bobine. A2 = Neutre."},
+{q:"Chute de tension max tolérée pour l'éclairage ?",o:["1 %","3 %","5 %","8 %"],c:1,e:"3 % max pour l'éclairage, 5 % pour autres usages."},
+{q:"Sur le Woyofal, quelle borne est le Neutre sortie ?",o:["1","2","3","4"],c:3,e:"Bornes : 1 (L entrée), 3 (N entrée), 2 (L sortie), 4 (N sortie)."},
+{q:"Combien de prises maximum sur un circuit 1,5 mm² ?",o:["4","6","8","12"],c:2,e:"8 prises en 1,5 mm² (16 A), 12 en 2,5 mm² (20 A)."},
+{q:"Quel appareil mesure la résistance d'isolement ?",o:["Multimètre","Pince ampèremétrique","Méghomètre","Testeur de tension"],c:2,e:"Le méghomètre applique 500 V DC et mesure la résistance d'isolement."},
+{q:"Résistance d'isolement minimale pour un circuit conforme ?",o:["0,1 MΩ","0,5 MΩ","1 MΩ","5 MΩ"],c:1,e:"La résistance d'isolement doit être > 0,5 MΩ."},
+{q:"Quel dispositif protège contre les surtensions atmosphériques ?",o:["Disjoncteur","Parafoudre (SPD)","Différentiel","Fusible"],c:1,e:"Le parafoudre (SPD) protège contre les surtensions atmosphériques."},
+{q:"Comment est représentée une prise 2P+T sur plan archi ?",o:["Cercle avec croix","Demi-cercle avec barre verticale","Carré plein","Triangle"],c:1,e:"Demi-cercle traversé d'une barre verticale (pôle Terre)."},
+{q:"Pouvoir de coupure minimum recommandé au Sénégal ?",o:["1,5 kA","3 kA","6 kA","10 kA"],c:2,e:"6 kA minimum recommandé, voire 10 kA en zone exposée."}
+];
+
+function genQ(){
+var c=document.getElementById('qc'); if(!c) return;
+var h='';
+for(var i=0;i<QS.length;i++){
+var it=QS[i];
+h+='<div class="q" data-qi="'+i+'"><p class="qt">'+(i+1)+'. '+it.q+'</p>';
+for(var j=0;j<it.o.length;j++){h+='<label><input type="radio" name="q'+i+'" value="'+j+'">'+it.o[j]+'</label>';}
+h+='<div class="ex" id="ex'+i+'">💡 <strong>Explication :</strong> '+it.e+'</div></div>';
+}
+c.innerHTML=h;
+}
+
+function validQ(){
+var score=0,total=QS.length;
+for(var i=0;i<QS.length;i++){
+var it=QS[i];
+var sel=document.querySelector('input[name="q'+i+'"]:checked');
+var qd=document.querySelector('.q[data-qi="'+i+'"]');
+var ls=qd.querySelectorAll('label');
+var ex=document.getElementById('ex'+i);
+for(var k=0;k<ls.length;k++){ls[k].classList.remove('ok','ko');}
+ex.classList.add('show');
+if(sel){
+var v=parseInt(sel.value);
+if(v===it.c){score++;ls[v].classList.add('ok');}
+else{ls[v].classList.add('ko');ls[it.c].classList.add('ok');}
+} else {ls[it.c].classList.add('ok');}
+}
+var box=document.getElementById('sbox');
+var pct=Math.round((score/total)*100);
+box.classList.add('show');box.classList.remove('exc','moy','fai');
+var msg='🎯 Score : <strong>'+score+' / '+total+'</strong> ('+pct+' %)<br>';
+if(pct>=80){box.classList.add('exc');msg+="🏆 Excellent ! Vous maîtrisez les fondamentaux.";}
+else if(pct>=50){box.classList.add('moy');msg+="📖 Bonne base. Révisez les chapitres 1 et 2.";}
+else{box.classList.add('fai');msg+="⚠️ Reprenez les chapitres 1 à 3 avant de passer au diagnostic.";}
+box.innerHTML=msg;
+box.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function resetQ(){
+var rs=document.querySelectorAll('input[type=radio]');
+for(var i=0;i<rs.length;i++){rs[i].checked=false;}
+var ls=document.querySelectorAll('.q label');
+for(var j=0;j<ls.length;j++){ls[j].classList.remove('ok','ko');}
+var es=document.querySelectorAll('.ex');
+for(var k=0;k<es.length;k++){es[k].classList.remove('show');}
+var box=document.getElementById('sbox');
+box.classList.remove('show','exc','moy','fai');box.innerHTML='';
+document.getElementById('qcm').scrollIntoView({behavior:'smooth'});
+}
+
+var SS=[1.5,2.5,4,6,10,16,25,35];
+var RC=0.023;
+
+function maxDisj(s){var m={1.5:16,2.5:20,4:25,6:32,10:40,16:63,25:80,35:100};return m[s]||100;}
+
+function calcSec(){
+var P=parseFloat(document.getElementById('pw').value);
+var U=parseFloat(document.getElementById('tv').value);
+var L=parseFloat(document.getElementById('lg').value);
+var cf=parseFloat(document.getElementById('cp').value);
+var T=document.getElementById('tp').value;
+var F=document.getElementById('ph').value;
+var rd=document.getElementById('cres');
+if(!P||!U||!L||!cf||P<=0||U<=0||L<=0){
+rd.classList.add('show');
+rd.innerHTML='<span class="al">⚠️ Veuillez renseigner tous les champs avec des valeurs positives.</span>';
+return;
+}
+var I=(F==='mono')?P/(U*cf):P/(Math.sqrt(3)*U*cf);
+var cm=(T==='eclairage')?3:5;
+var sc=null,ch=0;
+for(var i=0;i<SS.length;i++){
+var s=SS[i];
+var cv=(F==='mono')?(2*RC*L*I*cf)/s:(Math.sqrt(3)*RC*L*I*cf)/s;
+var cp2=(cv/U)*100;
+if(cp2<=cm){sc=s;ch=cp2;break;}
+}
+if(sc===null){
+sc=SS[SS.length-1];
+ch=(F==='mono')?(2*RC*L*I*cf/sc/U)*100:(Math.sqrt(3)*RC*L*I*cf/sc/U)*100;
+rd.classList.add('show');
+rd.innerHTML='<strong>⚠️ Attention :</strong> même avec 35 mm², la chute reste de <span class="v">'+ch.toFixed(2)+' %</span>.<br>→ Réduire la longueur ou augmenter la section au-delà du standard.';
+return;
+}
+var cal=[10,16,20,25,32,40,50,63];
+var cb=null;
+for(var j=0;j<cal.length;j++){
+if(cal[j]>=I*1.1&&cal[j]<=maxDisj(sc)){cb=cal[j];break;}
+}
+if(cb===null)cb=maxDisj(sc);
+var dt=(T==='clim'||T==='chauffe')?"Type A":"Type AC";
+rd.classList.add('show');
+rd.innerHTML='<strong>📊 Résultats :</strong><br><br>'+
+'<strong>Courant d\'emploi :</strong> <span class="v">'+I.toFixed(2)+' A</span><br>'+
+'<strong>Section recommandée :</strong> <span class="v">'+sc+' mm²</span><br>'+
+'<strong>Disjoncteur :</strong> <span class="v">'+cb+' A</span><br>'+
+'<strong>Différentiel :</strong> <span class="v">30 mA '+dt+'</span><br>'+
+'<strong>Chute calculée :</strong> <span class="v">'+ch.toFixed(2)+' %</span> <em>(limite '+cm+' %)</em><br><br>'+
+'<span style="color:#1b7e3f;font-weight:700;">✅ Configuration conforme NF C 15-100</span>';
+}
+
+(function(){
+var WU="https://wa.me/221786874960";
+var API=[
+function(s){return "https://api.qrserver.com/v1/create-qr-code/?size="+(s*3)+"x"+(s*3)+"&data="+encodeURIComponent(WU);},
+function(s){return "https://quickchart.io/qr?text="+encodeURIComponent(WU)+"&size="+(s*3)+"&margin=1";},
+function(s){return "https://chart.googleapis.com/chart?chs="+(s*3)+"x"+(s*3)+"&cht=qr&chl="+encodeURIComponent(WU);}
+];
+function genQR(id,sz){
+var el=document.getElementById(id);
+if(!el||el.dataset.g==="1")return;
+el.dataset.g="1";
+var fb=el.querySelector(".qr-fb");
+var idx=0;
+function next(){
+if(idx>=API.length){
+if(fb){fb.innerHTML="WhatsApp<br>+221 78 687 49 60";fb.style.fontSize="9px";}
+return;
+}
+var u=API[idx](sz);idx++;
+var img=new Image();
+img.style.width=sz+"px";
+img.style.height=sz+"px";
+img.style.display="block";
+img.style.margin="0 auto";
+img.style.borderRadius="5px";
+img.alt="QR WhatsApp";
+img.crossOrigin="anonymous";
+img.onload=function(){el.innerHTML="";el.appendChild(img);};
+img.onerror=function(){next();};
+img.src=u;
+setTimeout(function(){if(!img.complete||img.naturalWidth===0){next();}},4000);
+}
+next();
+}
+function init(){genQR("qr-cover",130);}
+if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",init);}else{init();}
+})();
+
+document.addEventListener('DOMContentLoaded',function(){
+genQ();
+window.addEventListener('scroll',function(){
+var b=document.getElementById('tp');
+if(b)b.style.display=window.scrollY>400?'block':'none';
+});
+var as=document.querySelectorAll('nav.toc a');
+for(var i=0;i<as.length;i++){
+as[i].addEventListener('click',function(e){
+e.preventDefault();
+var t=document.querySelector(this.getAttribute('href'));
+if(t)t.scrollIntoView({behavior:'smooth'});
+});
+}
+});
+</script>
+</body>
+  </html>
